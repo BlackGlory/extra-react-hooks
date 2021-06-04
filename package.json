@@ -1,0 +1,77 @@
+{
+  "name": "extra-hooks",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "main": "lib/es2018/index.js",
+  "types": "lib/es2018/index.d.ts",
+  "repository": "git@github.com:BlackGlory/extra-hooks.git",
+  "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src __tests__",
+    "test": "jest --config jest.config.js",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "test:coverage": "jest --coverage --config jest.config.js",
+    "prepublishOnly": "run-s clean build bundle",
+    "clean": "run-p clean:*",
+    "clean:build": "rimraf lib",
+    "clean:bundle": "rimraf dist",
+    "build": "run-p build:*",
+    "build:es2015": "run-s build:es2015:*",
+    "build:es2015:compile": "tsc --project tsconfig.build.json --module commonjs --target es2015 --outDir lib/es2015",
+    "build:es2015:patch": "tscpaths -p tsconfig.build.json -s ./src -o ./lib/es2015",
+    "build:es2018": "run-s build:es2018:*",
+    "build:es2018:compile": "tsc --project tsconfig.build.json --module commonjs --target es2018 --outDir lib/es2018",
+    "build:es2018:patch": "tscpaths -p tsconfig.build.json -s ./src -o ./lib/es2018",
+    "bundle": "rollup --config rollup.config.js",
+    "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s lint build test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@testing-library/react-hooks": "^7.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "husky": "^4.3.8",
+    "jest": "^27.0.4",
+    "jest-extended": "^0.11.5",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.50.6",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.3.0",
+    "ts-jest": "^27.0.2",
+    "tscpaths": "^0.0.9",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@blackglory/errors": "^1.1.2",
+    "@blackglory/types": "^0.4.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8"
+  }
+}
