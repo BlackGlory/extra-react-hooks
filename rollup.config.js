@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser'
 import analyze from 'rollup-plugin-analyzer'
 import replace from '@rollup/plugin-replace'
 
-const UMD_NAME = 'ExtraHooks'
+const UMD_NAME = 'ExtraReactHooks'
 
 export default [
   ...createOptions({

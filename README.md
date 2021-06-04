@@ -1,11 +1,11 @@
-# extra-hooks
+# extra-react-hooks
 
 ## Install
 
 ```sh
-npm install --save extra-hooks
+npm install --save extra-react-hooks
 # or
-yarn add extra-hooks
+yarn add extra-react-hooks
 ```
 
 ## API

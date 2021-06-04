@@ -1,5 +1,5 @@
 {
-  "name": "extra-hooks",
+  "name": "extra-react-hooks",
   "version": "0.1.0",
   "description": "",
   "keywords": [],
@@ -9,7 +9,7 @@
   ],
   "main": "lib/es2018/index.js",
   "types": "lib/es2018/index.d.ts",
-  "repository": "git@github.com:BlackGlory/extra-hooks.git",
+  "repository": "git@github.com:BlackGlory/extra-react-hooks.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
   "scripts": {
