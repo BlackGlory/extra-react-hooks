@@ -35,3 +35,9 @@ function useSingleSelection<T>(values: T[]): {
   options: Array<IOption<T>>
 }
 ```
+
+### useMount
+
+```ts
+function useMount(effect: EffectCallback): void
+```
