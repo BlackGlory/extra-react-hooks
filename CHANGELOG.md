@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.2...v0.1.3) (2021-08-18)
+
+
+### Features
+
+* add useStateCycle ([a48da21](https://github.com/BlackGlory/extra-react-hooks/commit/a48da211f364688daa63a0bd5406fa2f2c61eba7))
+
 ### [0.1.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.1...v0.1.2) (2021-07-03)
 
 ### [0.1.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.0...v0.1.1) (2021-06-29)
