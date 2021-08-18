@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.3...v0.1.4) (2021-08-18)
+
+
+### Features
+
+* add useIsMounted ([32a1295](https://github.com/BlackGlory/extra-react-hooks/commit/32a12951aab92ae5734f4caddf45021e2bbed793))
+
 ### [0.1.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.2...v0.1.3) (2021-08-18)
 
 
