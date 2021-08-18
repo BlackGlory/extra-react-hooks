@@ -41,3 +41,12 @@ function useSingleSelection<T>(values: T[]): {
 ```ts
 function useMount(effect: EffectCallback): void
 ```
+
+### useStateCycle
+
+```ts
+function useStateCycle<T>(
+  stateList: [T, ...T[]]
+, initialStateIndex: number = 0
+): [state: T, next: () => void]
+```
