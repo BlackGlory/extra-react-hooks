@@ -50,3 +50,9 @@ function useStateCycle<T>(
 , initialStateIndex: number = 0
 ): [state: T, next: () => void]
 ```
+
+### useIsMounted
+
+```ts
+function useIsMounted(): () => boolean
+```
