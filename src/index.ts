@@ -1,3 +1,4 @@
+export * from './use-increment'
 export * from './use-is-mounted'
 export * from './use-mount'
 export * from './use-single-selection'

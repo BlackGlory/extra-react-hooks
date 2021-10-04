@@ -56,3 +56,11 @@ function useStateCycle<T>(
 ```ts
 function useIsMounted(): () => boolean
 ```
+
+### useIncrement
+
+```ts
+function useIncrement(
+  initialValue: number
+): [value: number, increment: (step?: number) => void, reset: () => void]
+```
