@@ -1,8 +1,8 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useSingleSelection } from '@src/use-single-selection'
 
 describe('useSingleSelection', () => {
-  test('select', () => {
+  it('select', () => {
     const values = ['a', 'b']
     const { result } = renderHook(() => useSingleSelection(values, 0))
 
@@ -13,23 +13,23 @@ describe('useSingleSelection', () => {
 
     const { value, options } = result.current
     expect(value).toBe(values[1])
-    expect(options).toMatchObject([
+    expect(options).toEqual([
       {
         value: values[0]
       , index: 0
       , selected: false
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     , {
         value: values[1]
       , index: 1
       , selected: true
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     ])
   })
 
-  test(`
+  it(`
     <T>(values: T[], defaultIndex: number): {
       value: T
       options: Array<IOption<T>>
@@ -41,23 +41,23 @@ describe('useSingleSelection', () => {
 
     const { value, options } = result.current
     expect(value).toBe(values[index])
-    expect(options).toMatchObject([
+    expect(options).toEqual([
       {
         value: values[0]
       , index: 0
       , selected: true
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     , {
         value: values[1]
       , index: 1
       , selected: false
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     ])
   })
 
-  test(`
+  it(`
     <T>(values: T[]): {
       value: T | undefined
       options: Array<IOption<T>>
@@ -68,18 +68,18 @@ describe('useSingleSelection', () => {
 
     const { value, options } = result.current
     expect(value).toBeUndefined()
-    expect(options).toMatchObject([
+    expect(options).toEqual([
       {
         value: values[0]
       , index: 0
       , selected: false
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     , {
         value: values[1]
       , index: 1
       , selected: false
-      , select: expect.any(Function)
+      , select: jasmine.any(Function)
       }
     ])
   })

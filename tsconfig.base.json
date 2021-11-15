@@ -3,6 +3,7 @@
     "target": "ES2019"
   , "module": "CommonJS"
   , "strict": true
+  , "jsx": "react-jsx"
   , "noUnusedLocals": false
   , "noUnusedParameters": false
   , "skipLibCheck": true

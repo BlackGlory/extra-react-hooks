@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useStateCycle } from '@src/use-state-cycle'
 
 describe(`
@@ -7,7 +7,7 @@ describe(`
   , initialStateIndex: number = 0
   ): [state: T, next: () => void]
 `, () => {
-  test('initialState', () => {
+  it('initialState', () => {
     const { result } = renderHook(() => useStateCycle(['a', 'b', 'c'], 1))
 
     const [state] = result.current
@@ -15,7 +15,7 @@ describe(`
   })
 
   describe('next', () => {
-    test('current state isnt the last state', () => {
+    it('current state isnt the last state', () => {
       const { result } = renderHook(() => useStateCycle(['a', 'b', 'c'], 1))
 
       act(() => {
@@ -27,7 +27,7 @@ describe(`
       expect(state).toBe('c')
     })
 
-    test('current state is the last state', () => {
+    it('current state is the last state', () => {
       const { result } = renderHook(() => useStateCycle(['a', 'b', 'c'], 2))
 
       act(() => {

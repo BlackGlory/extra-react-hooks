@@ -64,3 +64,12 @@ function useIncrement(
   initialValue: number
 ): [value: number, increment: (step?: number) => void, reset: () => void]
 ```
+
+### useResizeObserver
+
+```ts
+function useResizeObserver(
+  callback: ResizeObserverCallback
+, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+): void
+```

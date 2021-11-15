@@ -1,15 +1,15 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useToggle } from '@src/use-toggle'
 
 describe('useToggle(initialState: boolean): [on: boolean, toggle: () => void]', () => {
-  test('initialState', () => {
+  it('initialState', () => {
     const { result } = renderHook(() => useToggle(false))
 
     const [on] = result.current
     expect(on).toBe(false)
   })
 
-  test('on -> off', () => {
+  it('on -> off', () => {
     const { result } = renderHook(() => useToggle(true))
 
     act(() => {
@@ -21,7 +21,7 @@ describe('useToggle(initialState: boolean): [on: boolean, toggle: () => void]', 
     expect(on).toBe(false)
   })
 
-  test('off -> on', () => {
+  it('off -> on', () => {
     const { result } = renderHook(() => useToggle(false))
 
     act(() => {

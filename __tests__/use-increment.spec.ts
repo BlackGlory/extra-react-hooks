@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useIncrement } from '@src/use-increment'
 
 describe(`
@@ -8,14 +8,14 @@ describe(`
   , reset: () => void
   ]
 `, () => {
-  test('initialState', () => {
+  it('initialState', () => {
     const { result } = renderHook(() => useIncrement(1))
 
     const [value] = result.current
     expect(value).toBe(1)
   })
 
-  test('increment', () => {
+  it('increment', () => {
     const { result } = renderHook(() => useIncrement(1))
 
     act(() => {
@@ -27,7 +27,7 @@ describe(`
     expect(value).toBe(3)
   })
 
-  test('reset', () => {
+  it('reset', () => {
     const { result } = renderHook(() => useIncrement(1))
 
     act(() => {
