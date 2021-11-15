@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.5...v0.1.6) (2021-11-15)
+
+
+### Features
+
+* add useResizeObserver ([8a4e317](https://github.com/BlackGlory/extra-react-hooks/commit/8a4e317921387fa26e768796e52c8fe44e9b347e))
+
 ### [0.1.5](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.4...v0.1.5) (2021-10-04)
 
 
