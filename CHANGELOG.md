@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.6...v0.1.7) (2021-12-10)
+
+
+### Features
+
+* add useStep ([f404846](https://github.com/BlackGlory/extra-react-hooks/commit/f4048462cc254499d7fd06cd51e16e98acd978ca))
+
 ### [0.1.6](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.5...v0.1.6) (2021-11-15)
 
 
