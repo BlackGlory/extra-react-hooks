@@ -73,3 +73,12 @@ function useResizeObserver(
 , refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
 ): void
 ```
+
+### useStep
+
+```ts
+function useStep<T>(
+  steps: [T, ...T[]]
+, initialStepIndex: number = 0
+): [currentStep: T, next: () => void, previous: () => void]
+```
