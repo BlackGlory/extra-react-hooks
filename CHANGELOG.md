@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.7...v0.1.8) (2021-12-13)
+
+
+### Features
+
+* add useForceUpdate ([f747227](https://github.com/BlackGlory/extra-react-hooks/commit/f747227c02c5bb2f0a0f1889de1c022bc9ca1e4d))
+
 ### [0.1.7](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.6...v0.1.7) (2021-12-10)
 
 
