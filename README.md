@@ -82,3 +82,9 @@ function useStep<T>(
 , initialStepIndex: number = 0
 ): [currentStep: T, next: () => void, previous: () => void]
 ```
+
+### useForceUpdate
+
+```ts
+function useForceUpdate(): () => void
+```
