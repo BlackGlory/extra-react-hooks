@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.8...v0.1.9) (2021-12-13)
+
+
+### Features
+
+* add useFiniteStateMachine ([e6e8962](https://github.com/BlackGlory/extra-react-hooks/commit/e6e8962724774a8b217a1fd5332c13ba4ee051f7))
+
 ### [0.1.8](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.7...v0.1.8) (2021-12-13)
 
 
