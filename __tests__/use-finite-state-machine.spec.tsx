@@ -21,7 +21,7 @@ describe(`
   it('change state', async () => {
     const fn = jasmine.createSpy()
 
-    const { getByText, queryByText, container } = render(
+    const { getByText, queryByText } = render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
     )
     fireEvent.click(getByText('turnOff'))
