@@ -75,7 +75,9 @@
   },
   "dependencies": {
     "@blackglory/errors": "^1.1.2",
-    "@blackglory/types": "^0.5.2"
+    "@blackglory/structures": "^0.3.1",
+    "@blackglory/types": "^0.5.2",
+    "observable-hooks": "^4.1.2"
   },
   "peerDependencies": {
     "react": ">= 16.8"

@@ -1,7 +1,5 @@
 # extra-react-hooks
-
 ## Install
-
 ```sh
 npm install --save extra-react-hooks
 # or
@@ -9,15 +7,12 @@ yarn add extra-react-hooks
 ```
 
 ## API
-
 ### useToggle
-
 ```ts
 function useToggle(initialState: boolean = false): [on: boolean, toggle: () => void]
 ```
 
 ### useSingleSelection
-
 ```ts
 interface IOption<T> {
   value: T
@@ -37,13 +32,11 @@ function useSingleSelection<T>(values: T[]): {
 ```
 
 ### useMount
-
 ```ts
 function useMount(effect: EffectCallback): void
 ```
 
 ### useStateCycle
-
 ```ts
 function useStateCycle<T>(
   stateList: [T, ...T[]]
@@ -52,13 +45,11 @@ function useStateCycle<T>(
 ```
 
 ### useIsMounted
-
 ```ts
 function useIsMounted(): () => boolean
 ```
 
 ### useIncrement
-
 ```ts
 function useIncrement(
   initialValue: number
@@ -66,7 +57,6 @@ function useIncrement(
 ```
 
 ### useResizeObserver
-
 ```ts
 function useResizeObserver(
   callback: ResizeObserverCallback
@@ -75,7 +65,6 @@ function useResizeObserver(
 ```
 
 ### useStep
-
 ```ts
 function useStep<T>(
   steps: [T, ...T[]]
@@ -84,7 +73,18 @@ function useStep<T>(
 ```
 
 ### useForceUpdate
-
 ```ts
 function useForceUpdate(): () => void
 ```
+
+### useFiniteStateMachine
+```ts
+function useFiniteStateMachine<State extends string, Event extends string>(
+  schema: IFiniteStateMachineSchema<State, Event>
+, initialState: State
+): ObservableFiniteStateMachine<State, Event>
+```
+
+The `ObservableFiniteStateMachine` comes from [@blackglory/structures].
+
+[@blackglory/structures]: https://www.npmjs.com/package/@blackglory/structures
