@@ -78,7 +78,6 @@
     "@blackglory/errors": "^2.2.1",
     "@blackglory/structures": "^0.6.0",
     "@blackglory/types": "^1.0.0",
-    "observable-hooks": "^4.2.0",
     "rxjs": "^7.5.5"
   },
   "peerDependencies": {

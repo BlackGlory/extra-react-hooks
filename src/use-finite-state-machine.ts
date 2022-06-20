@@ -1,9 +1,8 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import {
   ObservableFiniteStateMachine
 , IFiniteStateMachineSchema
 } from '@blackglory/structures'
-import { useObservable, useSubscription } from 'observable-hooks'
 import { useForceUpdate } from './use-force-update'
 
 export {
@@ -20,9 +19,13 @@ export function useFiniteStateMachine<State extends string, Event extends string
     () => new ObservableFiniteStateMachine(schema, initialState)
   , [schema]
   )
-  useSubscription(
-    useObservable(() => fsm.observeStateChanges(), [fsm])
-  , forceUpdate
-  )
+
+  useEffect(() => {
+    const observable = fsm.observeStateChanges()
+    const subscription = observable.subscribe(() => forceUpdate())
+
+    return () => subscription.unsubscribe()
+  }, [fsm])
+
   return fsm
 }
