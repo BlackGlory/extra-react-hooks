@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { isUndefined, isntUndefined } from '@blackglory/types'
 import { assert } from '@blackglory/errors'
 
@@ -35,7 +35,7 @@ export function useSingleSelection<T>(
 
   const [selectedIndex, setSelectedIndex] = useState<number | undefined>(defaultSelectedIndex)
 
-  return {
+  return useMemo(() => ({
     selectedValue: isUndefined(selectedIndex) ? undefined : values[selectedIndex]
   , options: values.map((value, index) => ({
       value
@@ -43,5 +43,5 @@ export function useSingleSelection<T>(
     , selected: index === selectedIndex
     , select: () => setSelectedIndex(index)
     }))
-  }
+  }), [selectedIndex])
 }
