@@ -14,20 +14,45 @@ function useToggle(initialState: boolean = false): [on: boolean, toggle: () => v
 
 ### useSingleSelection
 ```ts
-interface IOption<T> {
+interface ISingleSelectionOption<T> {
   value: T
   index: number
   selected: boolean
-  select: () => void
+
+  select(): void
 }
 
-function useSingleSelection<T>(values: T[], defaultIndex: number): {
+function useSingleSelection<T>(
+  values: T[]
+, defaultSelectedIndex: number
+): {
   value: T
-  options: Array<IOption<T>>
+  options: Array<ISingleSelectionOption<T>>
 }
 function useSingleSelection<T>(values: T[]): {
   value: T | undefined
-  options: Array<IOption<T>>
+  options: Array<ISingleSelectionOption<T>>
+}
+```
+
+### useMultipleSelection
+```ts
+interface IMultipleSelectionOption<T> {
+  value: T
+  index: number
+  selected: boolean
+
+  select(): void
+  unselect(): void
+  toggle(): void
+}
+
+function useMultipleSelection<T>(
+  values: T[]
+, defaultSelectedIndexes: number[] = []
+): {
+  values: T[]
+  options: Array<IMultipleSelectionOption<T>>
 }
 ```
 
