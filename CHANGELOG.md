@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.15...v0.2.0) (2022-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* - The return value of `useSingleSelection`:
+  - Rename `value` to `selectedValue`
+- The return value of `useMultipleSelection`:
+  - Rename `values` to `selectedValues`
+
+* rename props of return values ([87e357b](https://github.com/BlackGlory/extra-react-hooks/commit/87e357be9e502cd915b4505979184bf85f2819ba))
+
 ### [0.1.15](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.14...v0.1.15) (2022-07-21)
 
 
