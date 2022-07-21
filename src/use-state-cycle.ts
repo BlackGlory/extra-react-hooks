@@ -6,14 +6,15 @@ export function useStateCycle<T>(
 ): [state: T, next: () => void] {
   const [index, setIndex] = useState(initialStateIndex)
 
-  return [
-    stateList[index]
-  , () => setIndex(index => {
+  return [stateList[index], next]
+
+  function next() {
+    setIndex(index => {
       if (index + 1 < stateList.length) {
         return index + 1
       } else {
         return 0
       }
     })
-  ]
+  }
 }
