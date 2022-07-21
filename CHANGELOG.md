@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.14...v0.1.15) (2022-07-21)
+
+
+### Features
+
+* add useRenderCounter ([c522357](https://github.com/BlackGlory/extra-react-hooks/commit/c5223571d7e1d83cd49349b8e17c005a898e4b0a))
+
 ### [0.1.14](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.13...v0.1.14) (2022-07-21)
 
 
