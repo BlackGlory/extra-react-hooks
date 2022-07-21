@@ -2,31 +2,38 @@ import { useState } from 'react'
 import { isUndefined, isntUndefined } from '@blackglory/types'
 import { assert } from '@blackglory/errors'
 
-interface IOption<T> {
+export interface ISingleSelectionOption<T> {
   value: T
   index: number
   selected: boolean
-  select: () => void
+
+  select(): void
 }
 
-export function useSingleSelection<T>(values: T[], defaultIndex: number): {
+export function useSingleSelection<T>(
+  values: T[]
+, defaultSelectedIndex: number
+): {
   value: T
-  options: Array<IOption<T>>
+  options: Array<ISingleSelectionOption<T>>
 }
 export function useSingleSelection<T>(values: T[]): {
   value: T | undefined
-  options: Array<IOption<T>>
+  options: Array<ISingleSelectionOption<T>>
 }
-export function useSingleSelection<T>(values: T[], defaultIndex?: number) {
+export function useSingleSelection<T>(
+  values: T[]
+, defaultSelectedIndex?: number
+) {
   assert(values.length > 0, 'The parameter values must be a non-empty array')
-  if (isntUndefined(defaultIndex)) {
+  if (isntUndefined(defaultSelectedIndex)) {
     assert(
-      defaultIndex >= 0 && defaultIndex < values.length
-    , 'The parameter defaultIndex must be in the range of 0 to values.length'
+      defaultSelectedIndex >= 0 && defaultSelectedIndex < values.length
+    , 'The parameter defaultSelectedIndex must be in the range of 0 to values.length'
     )
   }
 
-  const [selectedIndex, setSelectedIndex] = useState<number | undefined>(defaultIndex)
+  const [selectedIndex, setSelectedIndex] = useState<number | undefined>(defaultSelectedIndex)
 
   return {
     value: isUndefined(selectedIndex) ? undefined : values[selectedIndex]
