@@ -61,6 +61,14 @@ function useMultipleSelection<T>(
 function useMount(effect: EffectCallback): void
 ```
 
+### useUpdateEffect
+```ts
+function useUpdateEffect(
+  effect: EffectCallback
+, deps?: React.DependencyList
+): void
+```
+
 ### useStateCycle
 ```ts
 function useStateCycle<T>(
@@ -72,6 +80,11 @@ function useStateCycle<T>(
 ### useIsMounted
 ```ts
 function useIsMounted(): () => boolean
+```
+
+### useIsFirstRender
+```ts
+function useIsFirstRender(): () => boolean
 ```
 
 ### useIncrement
