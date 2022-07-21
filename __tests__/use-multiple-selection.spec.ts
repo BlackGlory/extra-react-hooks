@@ -13,7 +13,7 @@ describe('useMultipleSelection', () => {
       const indexes = [0]
       const { result } = renderHook(() => useMultipleSelection(values, indexes))
 
-      const { values: selectedValues, options } = result.current
+      const { selectedValues, options } = result.current
       expect(selectedValues).toEqual(['a'])
       expect(options).toEqual([
         {
@@ -44,7 +44,7 @@ describe('useMultipleSelection', () => {
       const values = ['a', 'b']
       const { result } = renderHook(() => useMultipleSelection(values))
 
-      const { values: selectedValues, options } = result.current
+      const { selectedValues, options } = result.current
       expect(selectedValues).toEqual([])
       expect(options).toEqual([
         {
@@ -76,7 +76,7 @@ describe('useMultipleSelection', () => {
       options[1].select()
     })
 
-    const { values: selectedValues, options } = result.current
+    const { selectedValues, options } = result.current
     expect(selectedValues).toEqual([values[0], values[1]])
     expect(options).toEqual([
       {
@@ -107,7 +107,7 @@ describe('useMultipleSelection', () => {
       options[0].unselect()
     })
 
-    const { values: selectedValues, options } = result.current
+    const { selectedValues, options } = result.current
     expect(selectedValues).toEqual([])
     expect(options).toEqual([
       {
@@ -139,7 +139,7 @@ describe('useMultipleSelection', () => {
         options[1].toggle()
       })
 
-      const { values: selectedValues, options } = result.current
+      const { selectedValues, options } = result.current
       expect(selectedValues).toEqual([values[0], values[1]])
       expect(options).toEqual([
         {
@@ -170,7 +170,7 @@ describe('useMultipleSelection', () => {
         options[0].toggle()
       })
 
-      const { values: selectedValues, options } = result.current
+      const { selectedValues, options } = result.current
       expect(selectedValues).toEqual([])
       expect(options).toEqual([
         {

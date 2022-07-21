@@ -16,7 +16,7 @@ export function useMultipleSelection<T>(
   values: T[]
 , defaultSelectedIndexes: number[] = []
 ): {
-  values: T[]
+  selectedValues: T[]
   options: Array<IMultipleSelectionOption<T>>
 } {
   assert(values.length > 0, 'The parameter values must be a non-empty array')
@@ -30,7 +30,7 @@ export function useMultipleSelection<T>(
   const [selectedIndexes, setSelectedIndexes] = useState(new Set(defaultSelectedIndexes))
 
   return useMemo(() => ({
-    values: toArray(map(selectedIndexes, i => values[i]))
+    selectedValues: toArray(map(selectedIndexes, i => values[i]))
   , options: values.map((value, index) => {
       const selected = selectedIndexes.has(index)
       const select = () => {

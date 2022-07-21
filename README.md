@@ -26,11 +26,11 @@ function useSingleSelection<T>(
   values: T[]
 , defaultSelectedIndex: number
 ): {
-  value: T
+  selectedValue: T
   options: Array<ISingleSelectionOption<T>>
 }
 function useSingleSelection<T>(values: T[]): {
-  value: T | undefined
+  selectedValue: T | undefined
   options: Array<ISingleSelectionOption<T>>
 }
 ```
@@ -51,7 +51,7 @@ function useMultipleSelection<T>(
   values: T[]
 , defaultSelectedIndexes: number[] = []
 ): {
-  values: T[]
+  selectedValues: T[]
   options: Array<IMultipleSelectionOption<T>>
 }
 ```

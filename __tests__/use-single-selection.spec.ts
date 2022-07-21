@@ -13,8 +13,8 @@ describe('useSingleSelection', () => {
       const index = 0
       const { result } = renderHook(() => useSingleSelection(values, index))
 
-      const { value, options } = result.current
-      expect(value).toBe(values[index])
+      const { selectedValue, options } = result.current
+      expect(selectedValue).toBe(values[index])
       expect(options).toEqual([
         {
           value: values[0]
@@ -40,8 +40,8 @@ describe('useSingleSelection', () => {
       const values = ['a', 'b']
       const { result } = renderHook(() => useSingleSelection(values))
 
-      const { value, options } = result.current
-      expect(value).toBeUndefined()
+      const { selectedValue, options } = result.current
+      expect(selectedValue).toBeUndefined()
       expect(options).toEqual([
         {
           value: values[0]
@@ -68,8 +68,8 @@ describe('useSingleSelection', () => {
       options[1].select()
     })
 
-    const { value, options } = result.current
-    expect(value).toBe(values[1])
+    const { selectedValue, options } = result.current
+    expect(selectedValue).toBe(values[1])
     expect(options).toEqual([
       {
         value: values[0]
