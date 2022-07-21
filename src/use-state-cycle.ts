@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export function useStateCycle<T>(
   stateList: [T, ...T[]]
@@ -6,7 +6,7 @@ export function useStateCycle<T>(
 ): [state: T, next: () => void] {
   const [index, setIndex] = useState(initialStateIndex)
 
-  return [stateList[index], next]
+  return [stateList[index], useCallback(next, [])]
 
   function next() {
     setIndex(index => {

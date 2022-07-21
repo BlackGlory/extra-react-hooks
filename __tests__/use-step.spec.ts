@@ -14,6 +14,18 @@ describe(`
     expect(state).toBe('b')
   })
 
+  it('returns same references', () => {
+    const { result, rerender } = renderHook(() => useStep(['a', 'b', 'c'], 1))
+
+    const [state1, next1, previous1] = result.current
+    rerender()
+    const [state2, next2, previous2] = result.current
+
+    expect(state2).toBe(state1)
+    expect(next2).toBe(next1)
+    expect(previous2).toBe(previous1)
+  })
+
   describe('next', () => {
     describe('current step is the last step', () => {
       it('does nothing', () => {

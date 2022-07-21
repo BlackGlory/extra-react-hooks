@@ -1,7 +1,18 @@
 import { render, fireEvent } from '@testing-library/react'
+import { renderHook } from '@testing-library/react-hooks/dom'
 import { useForceUpdate } from '@src/use-force-update'
 
 describe('useForceUpdate(): () => void', () => {
+  it('returns same references', () => {
+    const { result, rerender } = renderHook(() => useForceUpdate())
+
+    const fn1 = result.current
+    rerender()
+    const fn2 = result.current
+
+    expect(fn2).toBe(fn1)
+  })
+
   it('not update', () => {
     const fn = jasmine.createSpy()
 

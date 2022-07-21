@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 
 enum State {
   InitialValue
@@ -19,5 +19,9 @@ export function useIsFirstRender(): () => boolean {
     case State.NotFirst: break
   }
 
-  return () => state.current === State.First
+  return useCallback(isFirstRender, [])
+
+  function isFirstRender() {
+    return state.current === State.First
+  }
 }

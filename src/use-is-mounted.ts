@@ -1,15 +1,19 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 import { useMount } from './use-mount'
 
 export function useIsMounted(): () => boolean {
-  const isMounted = useRef(false)
+  const mounted = useRef(false)
 
   useMount(() => {
-    isMounted.current = true
+    mounted.current = true
     return () => {
-      isMounted.current = false
+      mounted.current = false
     }
   })
 
-  return () => isMounted.current
+  return useCallback(isMounted, [])
+
+  function isMounted() {
+    return mounted.current
+  }
 }

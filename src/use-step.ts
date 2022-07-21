@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export function useStep<T>(
   steps: [T, ...T[]]
@@ -6,7 +6,7 @@ export function useStep<T>(
 ): [currentStep: T, next: () => void, previous: () => void] {
   const [index, setIndex] = useState(initialStepIndex)
 
-  return [steps[index], next, previous]
+  return [steps[index], useCallback(next, []), useCallback(previous, [])]
 
   function next() {
     setIndex(index => {
