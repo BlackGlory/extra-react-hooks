@@ -126,3 +126,8 @@ function useFiniteStateMachine<State extends string, Event extends string>(
 The `ObservableFiniteStateMachine` comes from [@blackglory/structures].
 
 [@blackglory/structures]: https://www.npmjs.com/package/@blackglory/structures
+
+### useRenderCounter
+```ts
+function useRenderCounter(): number
+```

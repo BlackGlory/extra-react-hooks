@@ -1,6 +1,7 @@
 export * from './use-increment'
 export * from './use-is-mounted'
 export * from './use-is-first-render'
+export * from './use-render-counter'
 export * from './use-mount'
 export * from './use-update-effect'
 export * from './use-single-selection'
