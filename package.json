@@ -78,7 +78,7 @@
   "dependencies": {
     "@blackglory/errors": "^2.2.1",
     "@blackglory/structures": "^0.6.0",
-    "@blackglory/types": "^1.0.0",
+    "@blackglory/types": "^1.2.0",
     "iterable-operator": "^1.1.0",
     "rxjs": "^7.5.6"
   },

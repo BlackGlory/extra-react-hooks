@@ -123,6 +123,14 @@
     justypes "^2.0.0"
     lodash "^4.17.21"
 
+"@blackglory/types@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@blackglory/types/-/types-1.2.0.tgz#a420ac8e4be1856ade0d47f72091fea45105b017"
+  integrity sha512-666XgMLvE6C9lNxmj2x6PwEycQMAH5U7/sRXLnhPE4/LUY6YaZ+LxaFT3j7jK5yfwjWVuebGmx1cvBKygi+Xfw==
+  dependencies:
+    justypes "^2.0.0"
+    lodash "^4.17.21"
+
 "@blackglory/wait-for@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@blackglory/wait-for/-/wait-for-0.5.1.tgz#e2bf5c79be929465a1dc60ba57c5c49ee08994fa"
