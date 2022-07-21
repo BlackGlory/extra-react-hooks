@@ -72,7 +72,7 @@ function useUpdateEffect(
 ### useStateCycle
 ```ts
 function useStateCycle<T>(
-  stateList: [T, ...T[]]
+  orderedStates: NonEmptyArray<T>
 , initialStateIndex: number = 0
 ): [state: T, next: () => void]
 ```
@@ -105,7 +105,7 @@ function useResizeObserver(
 ### useStep
 ```ts
 function useStep<T>(
-  steps: [T, ...T[]]
+  steps: NonEmptyArray<T>
 , initialStepIndex: number = 0
 ): [currentStep: T, next: () => void, previous: () => void]
 ```

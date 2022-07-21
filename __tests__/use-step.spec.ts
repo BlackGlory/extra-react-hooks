@@ -1,9 +1,10 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useStep } from '@src/use-step'
+import { NonEmptyArray } from 'justypes'
 
 describe(`
   useStep<T>(
-    steps: [T, ...T[]]
+    steps: NonEmptyArray<T>
   , initialStepIndex: number = 0
   ): [currentStep: T, next: () => void, previous: () => void]
 `, () => {
@@ -15,7 +16,8 @@ describe(`
   })
 
   it('returns same references', () => {
-    const { result, rerender } = renderHook(() => useStep(['a', 'b', 'c'], 1))
+    const steps: NonEmptyArray<string> = ['a', 'b', 'c']
+    const { result, rerender } = renderHook(() => useStep(steps, 1))
 
     const [state1, next1, previous1] = result.current
     rerender()

@@ -1,9 +1,10 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useStateCycle } from '@src/use-state-cycle'
+import { NonEmptyArray } from 'justypes'
 
 describe(`
   useStateCycle<T>(
-    stateList: [T, ...T[]]
+    orderedStates: NonEmptyArray<T>
   , initialStateIndex: number = 0
   ): [state: T, next: () => void]
 `, () => {
@@ -15,8 +16,8 @@ describe(`
   })
 
   it('returns same references', () => {
-    const { result, rerender } = renderHook(() => useStateCycle(['a', 'b', 'c'], 1))
-
+    const orderedStates: NonEmptyArray<string> = ['a', 'b', 'c']
+    const { result, rerender } = renderHook(() => useStateCycle(orderedStates, 1))
 
     const [state1, next1] = result.current
     rerender()

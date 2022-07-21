@@ -1,12 +1,13 @@
 import { useState, useCallback } from 'react'
+import { NonEmptyArray } from 'justypes'
 
 export function useStep<T>(
-  steps: [T, ...T[]]
+  steps: NonEmptyArray<T>
 , initialStepIndex: number = 0
 ): [currentStep: T, next: () => void, previous: () => void] {
   const [index, setIndex] = useState(initialStepIndex)
 
-  return [steps[index], useCallback(next, []), useCallback(previous, [])]
+  return [steps[index], useCallback(next, [steps]), useCallback(previous, [steps])]
 
   function next() {
     setIndex(index => {
