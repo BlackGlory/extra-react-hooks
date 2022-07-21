@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { assert } from '@blackglory/errors'
 import { map, toArray } from 'iterable-operator'
 
@@ -29,7 +29,7 @@ export function useMultipleSelection<T>(
 
   const [selectedIndexes, setSelectedIndexes] = useState(new Set(defaultSelectedIndexes))
 
-  return {
+  return useMemo(() => ({
     values: toArray(map(selectedIndexes, i => values[i]))
   , options: values.map((value, index) => {
       const selected = selectedIndexes.has(index)
@@ -53,5 +53,5 @@ export function useMultipleSelection<T>(
       , toggle: selected ? unselect : select
       }
     })
-  }
+  }), [selectedIndexes])
 }
