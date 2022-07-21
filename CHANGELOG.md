@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.13...v0.1.14) (2022-07-21)
+
+
+### Features
+
+* add useIsFirstRender, useUpdateEffect ([b4f315b](https://github.com/BlackGlory/extra-react-hooks/commit/b4f315bcd8f6fd367bdb8044bade741bbdc8d9b9))
+
 ### [0.1.13](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.12...v0.1.13) (2022-07-21)
 
 
