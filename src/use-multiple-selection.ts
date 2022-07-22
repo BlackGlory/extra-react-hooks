@@ -29,7 +29,7 @@ export function useMultipleSelection<T>(
   return {
     selectedIndexes: useMemo(() => toArray(selectedIndexes), [selectedIndexes])
   , optionStates: useMemo(createOptionStates, [options, selectedIndexes])
-  , toggle: useCallback(toggle, [])
+  , toggle: useCallback(toggle, [selectedIndexes])
   , select: useCallback(select, [])
   , unselect: useCallback(unselect, [])
   }

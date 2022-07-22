@@ -122,7 +122,7 @@ describe('useMultipleSelection', () => {
 
     it('unselected => selected => unselected', () => {
       const options: NonEmptyArray<string> = ['a']
-      const { result, rerender } = renderHook(() => useMultipleSelection(options, [0]))
+      const { result, rerender } = renderHook(() => useMultipleSelection(options, []))
 
       act(() => {
         const { toggle } = result.current
