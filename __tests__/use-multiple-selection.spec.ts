@@ -119,5 +119,26 @@ describe('useMultipleSelection', () => {
       , { selected: false }
       ])
     })
+
+    it('unselected => selected => unselected', () => {
+      const options: NonEmptyArray<string> = ['a']
+      const { result, rerender } = renderHook(() => useMultipleSelection(options, [0]))
+
+      act(() => {
+        const { toggle } = result.current
+        toggle(0)
+      })
+      rerender()
+      act(() => {
+        const { toggle } = result.current
+        toggle(0)
+      })
+
+      const { selectedIndexes, optionStates } = result.current
+      expect(selectedIndexes).toEqual([])
+      expect(optionStates).toEqual([
+        { selected: false }
+      ])
+    })
   })
 })
