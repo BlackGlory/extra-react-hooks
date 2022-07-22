@@ -13,7 +13,7 @@ export function useIsMounted(): () => boolean {
 
   return useCallback(isMounted, [])
 
-  function isMounted() {
+  function isMounted(): boolean {
     return mounted.current
   }
 }

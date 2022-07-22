@@ -1,88 +1,44 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useSingleSelection } from '@src/use-single-selection'
+import { NonEmptyArray } from 'justypes'
 
-describe('useSingleSelection', () => {
-  describe('initialState', () => {
-    it(`
-      <T>(values: T[], defaultSelectedIndex: number): {
-        value: T
-        options: Array<ISingleSelectionOption<T>>
-      }
-    `, () => {
-      const values = ['a', 'b']
-      const index = 0
-      const { result } = renderHook(() => useSingleSelection(values, index))
+describe(`
+  useSingleSelection<T>(
+    options: NonEmptyArray<T>
+  , defaultSelectedIndex: number
+  ): {
+    selectedIndex: number
+    optionStates: IOptionState[]
+    select: (index: number) => void
+  }
+`, () => {
+  it('initialState', () => {
+    const options: NonEmptyArray<string> = ['a', 'b']
+    const index = 0
+    const { result } = renderHook(() => useSingleSelection(options, index))
 
-      const { selectedValue, options } = result.current
-      expect(selectedValue).toBe(values[index])
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: true
-        , select: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: false
-        , select: jasmine.any(Function)
-        }
-      ])
-    })
-
-    it(`
-      <T>(values: T[]): {
-        value: T | undefined
-        options: Array<ISingleSelectionOption<T>>
-      }
-    `, () => {
-      const values = ['a', 'b']
-      const { result } = renderHook(() => useSingleSelection(values))
-
-      const { selectedValue, options } = result.current
-      expect(selectedValue).toBeUndefined()
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: false
-        , select: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: false
-        , select: jasmine.any(Function)
-        }
-      ])
-    })
+    const { selectedIndex, optionStates } = result.current
+    expect(selectedIndex).toBe(index)
+    expect(optionStates).toEqual([
+      { selected: true }
+    , { selected: false }
+    ])
   })
 
   it('select', () => {
-    const values = ['a', 'b']
-    const { result } = renderHook(() => useSingleSelection(values, 0))
+    const options: NonEmptyArray<string> = ['a', 'b']
+    const { result } = renderHook(() => useSingleSelection(options, 0))
 
     act(() => {
-      const { options } = result.current
-      options[1].select()
+      const { select } = result.current
+      select(1)
     })
 
-    const { selectedValue, options } = result.current
-    expect(selectedValue).toBe(values[1])
-    expect(options).toEqual([
-      {
-        value: values[0]
-      , index: 0
-      , selected: false
-      , select: jasmine.any(Function)
-      }
-    , {
-        value: values[1]
-      , index: 1
-      , selected: true
-      , select: jasmine.any(Function)
-      }
+    const { selectedIndex, optionStates } = result.current
+    expect(selectedIndex).toBe(1)
+    expect(optionStates).toEqual([
+      { selected: false }
+    , { selected: true }
     ])
   })
 })

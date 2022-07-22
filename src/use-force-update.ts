@@ -5,7 +5,7 @@ export function useForceUpdate(): () => void {
 
   return useCallback(forceUpdate, [])
 
-  function forceUpdate() {
+  function forceUpdate(): void {
     setState({})
   }
 }

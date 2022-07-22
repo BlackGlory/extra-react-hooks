@@ -9,7 +9,7 @@ export function useStateCycle<T>(
 
   return [orderedStates[index], useCallback(next, [orderedStates])]
 
-  function next() {
+  function next(): void {
     setIndex(index => {
       if (index + 1 < orderedStates.length) {
         return index + 1

@@ -1,47 +1,36 @@
-import { useState, useMemo } from 'react'
-import { isUndefined, isntUndefined } from '@blackglory/types'
+import { useState, useMemo, useCallback } from 'react'
 import { assert } from '@blackglory/errors'
-
-export interface ISingleSelectionOption<T> {
-  value: T
-  index: number
-  selected: boolean
-
-  select(): void
-}
+import { NonEmptyArray } from 'justypes'
+import { IOptionState } from '@src/types'
 
 export function useSingleSelection<T>(
-  values: T[]
+  options: NonEmptyArray<T>
 , defaultSelectedIndex: number
 ): {
-  selectedValue: T
-  options: Array<ISingleSelectionOption<T>>
-}
-export function useSingleSelection<T>(values: T[]): {
-  selectedValue: T | undefined
-  options: Array<ISingleSelectionOption<T>>
-}
-export function useSingleSelection<T>(
-  values: T[]
-, defaultSelectedIndex?: number
-) {
-  assert(values.length > 0, 'The parameter values must be a non-empty array')
-  if (isntUndefined(defaultSelectedIndex)) {
-    assert(
-      defaultSelectedIndex >= 0 && defaultSelectedIndex < values.length
-    , 'The parameter defaultSelectedIndex must be in the range of 0 to values.length'
-    )
+  selectedIndex: number
+  optionStates: IOptionState[]
+  select: (index: number) => void
+} {
+  assert(
+    defaultSelectedIndex >= 0 && defaultSelectedIndex < options.length
+  , 'The parameter defaultSelectedIndex must be in the range of 0 to values.length'
+  )
+
+  const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
+
+  return {
+    selectedIndex
+  , optionStates: useMemo(createOptionStates, [options, selectedIndex])
+  , select: useCallback(select, [])
   }
 
-  const [selectedIndex, setSelectedIndex] = useState<number | undefined>(defaultSelectedIndex)
-
-  return useMemo(() => ({
-    selectedValue: isUndefined(selectedIndex) ? undefined : values[selectedIndex]
-  , options: values.map((value, index) => ({
-      value
-    , index
-    , selected: index === selectedIndex
-    , select: () => setSelectedIndex(index)
+  function createOptionStates(): IOptionState[] {
+    return options.map((_, index) => ({
+      selected: index === selectedIndex
     }))
-  }), [selectedIndex])
+  }
+
+  function select(index: number): void {
+    setSelectedIndex(index)
+  }
 }

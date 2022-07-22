@@ -7,6 +7,12 @@ yarn add extra-react-hooks
 ```
 
 ## API
+```ts
+interface IOptionState {
+  selected: boolean
+}
+```
+
 ### useToggle
 ```ts
 function useToggle(initialState: boolean = false): [on: boolean, toggle: () => void]
@@ -14,45 +20,27 @@ function useToggle(initialState: boolean = false): [on: boolean, toggle: () => v
 
 ### useSingleSelection
 ```ts
-interface ISingleSelectionOption<T> {
-  value: T
-  index: number
-  selected: boolean
-
-  select(): void
-}
-
 function useSingleSelection<T>(
-  values: T[]
+  options: NonEmptyArray<T>
 , defaultSelectedIndex: number
 ): {
-  selectedValue: T
-  options: Array<ISingleSelectionOption<T>>
-}
-function useSingleSelection<T>(values: T[]): {
-  selectedValue: T | undefined
-  options: Array<ISingleSelectionOption<T>>
+  selectedIndex: number
+  optionStates: IOptionState[]
+  select: (index: number) => void
 }
 ```
 
 ### useMultipleSelection
 ```ts
-interface IMultipleSelectionOption<T> {
-  value: T
-  index: number
-  selected: boolean
-
-  select(): void
-  unselect(): void
-  toggle(): void
-}
-
 function useMultipleSelection<T>(
-  values: T[]
+  options: NonEmptyArray<T>
 , defaultSelectedIndexes: number[] = []
 ): {
-  selectedValues: T[]
-  options: Array<IMultipleSelectionOption<T>>
+  selectedIndexes: number[]
+  optionStates: IOptionState[]
+  toggle: (index: number) => void
+  select: (index: number) => void
+  unselect: (index: number) => void
 }
 ```
 

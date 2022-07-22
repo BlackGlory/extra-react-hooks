@@ -21,7 +21,7 @@ export function useIsFirstRender(): () => boolean {
 
   return useCallback(isFirstRender, [])
 
-  function isFirstRender() {
+  function isFirstRender(): boolean {
     return state.current === State.First
   }
 }

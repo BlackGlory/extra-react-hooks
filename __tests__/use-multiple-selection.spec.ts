@@ -1,194 +1,122 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useMultipleSelection } from '@src/use-multiple-selection'
+import { NonEmptyArray } from 'justypes'
 
 describe('useMultipleSelection', () => {
   describe('initialState', () => {
     it(`
-      <T>(values: T[], defaultSelectedIndexes: number[]): {
-        value: T
-        options: Array<IMultipleSelectionOption<T>>
+      <T>(
+        options: NonEmptyArray<T>
+      , defaultSelectedIndexes: number[]
+      ): {
+        selectedIndexes: number[]
+        optionStates: IOptionState[]
+        toggle: (index: number) => void
+        select: (index: number) => void
+        unselect: (index: number) => void
       }
     `, () => {
-      const values = ['a', 'b']
+      const options: NonEmptyArray<string> = ['a', 'b']
       const indexes = [0]
-      const { result } = renderHook(() => useMultipleSelection(values, indexes))
+      const { result } = renderHook(() => useMultipleSelection(options, indexes))
 
-      const { selectedValues, options } = result.current
-      expect(selectedValues).toEqual(['a'])
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: true
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: false
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
+      const { selectedIndexes, optionStates } = result.current
+      expect(selectedIndexes).toEqual([0])
+      expect(optionStates).toEqual([
+        { selected: true }
+      , { selected: false }
       ])
     })
 
     it(`
-      <T>(values: T[]): {
-        value: T[]
-        options: Array<IMultipleSelectionOption<T>>
+      <T>(
+        options: NonEmptyArray<T>
+      ): {
+        selectedIndex: number[]
+        optionStates: IOptionState[]
+        toggle: (index: number) => void
+        select: (index: number) => void
+        unselect: (index: number) => void
       }
     `, () => {
-      const values = ['a', 'b']
-      const { result } = renderHook(() => useMultipleSelection(values))
+      const options: NonEmptyArray<string> = ['a', 'b']
+      const { result } = renderHook(() => useMultipleSelection(options))
 
-      const { selectedValues, options } = result.current
-      expect(selectedValues).toEqual([])
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: false
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: false
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
+      const { selectedIndexes, optionStates } = result.current
+      expect(selectedIndexes).toEqual([])
+      expect(optionStates).toEqual([
+        { selected: false }
+      , { selected: false }
       ])
     })
   })
 
   it('select', () => {
-    const values = ['a', 'b']
-    const { result } = renderHook(() => useMultipleSelection(values, [0]))
+    const options: NonEmptyArray<string> = ['a', 'b']
+    const { result } = renderHook(() => useMultipleSelection(options, [0]))
 
     act(() => {
-      const { options } = result.current
-      options[1].select()
+      const { select } = result.current
+      select(1)
     })
 
-    const { selectedValues, options } = result.current
-    expect(selectedValues).toEqual([values[0], values[1]])
-    expect(options).toEqual([
-      {
-        value: values[0]
-      , index: 0
-      , selected: true
-      , select: jasmine.any(Function)
-      , unselect: jasmine.any(Function)
-      , toggle: jasmine.any(Function)
-      }
-    , {
-        value: values[1]
-      , index: 1
-      , selected: true
-      , select: jasmine.any(Function)
-      , unselect: jasmine.any(Function)
-      , toggle: jasmine.any(Function)
-      }
+    const { selectedIndexes, optionStates } = result.current
+    expect(selectedIndexes).toEqual([0, 1])
+    expect(optionStates).toEqual([
+      { selected: true }
+    , { selected: true }
     ])
   })
 
   it('unselect', () => {
-    const values = ['a', 'b']
-    const { result } = renderHook(() => useMultipleSelection(values, [0]))
+    const options: NonEmptyArray<string> = ['a', 'b']
+    const { result } = renderHook(() => useMultipleSelection(options, [0]))
 
     act(() => {
-      const { options } = result.current
-      options[0].unselect()
+      const { unselect } = result.current
+      unselect(0)
     })
 
-    const { selectedValues, options } = result.current
-    expect(selectedValues).toEqual([])
-    expect(options).toEqual([
-      {
-        value: values[0]
-      , index: 0
-      , selected: false
-      , select: jasmine.any(Function)
-      , unselect: jasmine.any(Function)
-      , toggle: jasmine.any(Function)
-      }
-    , {
-        value: values[1]
-      , index: 1
-      , selected: false
-      , select: jasmine.any(Function)
-      , unselect: jasmine.any(Function)
-      , toggle: jasmine.any(Function)
-      }
+    const { selectedIndexes, optionStates } = result.current
+    expect(selectedIndexes).toEqual([])
+    expect(optionStates).toEqual([
+      { selected: false }
+    , { selected: false }
     ])
   })
 
   describe('toggle', () => {
     it('unselected => selected', () => {
-      const values = ['a', 'b']
-      const { result } = renderHook(() => useMultipleSelection(values, [0]))
+      const options: NonEmptyArray<string> = ['a', 'b']
+      const { result } = renderHook(() => useMultipleSelection(options, [0]))
 
       act(() => {
-        const { options } = result.current
-        options[1].toggle()
+        const { toggle } = result.current
+        toggle(1)
       })
 
-      const { selectedValues, options } = result.current
-      expect(selectedValues).toEqual([values[0], values[1]])
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: true
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: true
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
+      const { selectedIndexes, optionStates } = result.current
+      expect(selectedIndexes).toEqual([0, 1])
+      expect(optionStates).toEqual([
+        { selected: true }
+      , { selected: true }
       ])
     })
 
     it('unselected => unselected', () => {
-      const values = ['a', 'b']
-      const { result } = renderHook(() => useMultipleSelection(values, [0]))
+      const options: NonEmptyArray<string> = ['a', 'b']
+      const { result } = renderHook(() => useMultipleSelection(options, [0]))
 
       act(() => {
-        const { options } = result.current
-        options[0].toggle()
+        const { toggle } = result.current
+        toggle(0)
       })
 
-      const { selectedValues, options } = result.current
-      expect(selectedValues).toEqual([])
-      expect(options).toEqual([
-        {
-          value: values[0]
-        , index: 0
-        , selected: false
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
-      , {
-          value: values[1]
-        , index: 1
-        , selected: false
-        , select: jasmine.any(Function)
-        , unselect: jasmine.any(Function)
-        , toggle: jasmine.any(Function)
-        }
+      const { selectedIndexes, optionStates } = result.current
+      expect(selectedIndexes).toEqual([])
+      expect(optionStates).toEqual([
+        { selected: false }
+      , { selected: false }
       ])
     })
   })

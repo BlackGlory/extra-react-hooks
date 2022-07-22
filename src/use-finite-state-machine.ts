@@ -17,7 +17,7 @@ export function useFiniteStateMachine<State extends string, Event extends string
   const forceUpdate = useForceUpdate()
   const fsm = useMemo(
     () => new ObservableFiniteStateMachine(schema, initialState)
-  , [schema]
+  , [schema, initialState]
   )
 
   useEffect(() => {

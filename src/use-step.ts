@@ -7,9 +7,9 @@ export function useStep<T>(
 ): [currentStep: T, next: () => void, previous: () => void] {
   const [index, setIndex] = useState(initialStepIndex)
 
-  return [steps[index], useCallback(next, [steps]), useCallback(previous, [steps])]
+  return [steps[index], useCallback(next, [steps]), useCallback(previous, [])]
 
-  function next() {
+  function next(): void {
     setIndex(index => {
       if (index === steps.length - 1) {
         return index
@@ -19,7 +19,7 @@ export function useStep<T>(
     })
   }
 
-  function previous() {
+  function previous(): void {
     setIndex(index => {
       if (index === 0) {
         return index

@@ -1,57 +1,68 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { assert } from '@blackglory/errors'
-import { map, toArray } from 'iterable-operator'
-
-interface IMultipleSelectionOption<T> {
-  value: T
-  index: number
-  selected: boolean
-
-  select(): void
-  unselect(): void
-  toggle(): void
-}
+import { toArray } from 'iterable-operator'
+import { NonEmptyArray } from 'justypes'
+import { IOptionState } from '@src/types'
 
 export function useMultipleSelection<T>(
-  values: T[]
+  options: NonEmptyArray<T>
 , defaultSelectedIndexes: number[] = []
 ): {
-  selectedValues: T[]
-  options: Array<IMultipleSelectionOption<T>>
+  selectedIndexes: number[]
+  optionStates: IOptionState[]
+  toggle: (index: number) => void
+  select: (index: number) => void
+  unselect: (index: number) => void
 } {
-  assert(values.length > 0, 'The parameter values must be a non-empty array')
   for (const index of defaultSelectedIndexes) {
     assert(
-      index >= 0 && index < values.length
+      index >= 0 && index < options.length
     , 'The index of parameter defaultSelectedIndexes must be in the range of 0 to values.length'
     )
   }
 
   const [selectedIndexes, setSelectedIndexes] = useState(new Set(defaultSelectedIndexes))
 
-  return useMemo(() => ({
-    selectedValues: toArray(map(selectedIndexes, i => values[i]))
-  , options: values.map((value, index) => {
-      const selected = selectedIndexes.has(index)
-      const select = () => {
-        const set = new Set(selectedIndexes)
-        set.add(index)
-        setSelectedIndexes(set)
-      }
-      const unselect = () => {
-        const set = new Set(selectedIndexes)
-        set.delete(index)
-        setSelectedIndexes(set)
-      }
+  return {
+    selectedIndexes: useMemo(() => toArray(selectedIndexes), [selectedIndexes])
+  , optionStates: useMemo(createOptionStates, [options, selectedIndexes])
+  , toggle: useCallback(toggle, [])
+  , select: useCallback(select, [])
+  , unselect: useCallback(unselect, [])
+  }
 
-      return {
-        value
-      , index
-      , selected
-      , select
-      , unselect
-      , toggle: selected ? unselect : select
-      }
+  function createOptionStates(): IOptionState[] {
+    return options.map((_, index) => {
+      const selected = isSelected(index)
+      return { selected }
     })
-  }), [selectedIndexes])
+  }
+
+  function isSelected(index: number): boolean {
+    return selectedIndexes.has(index)
+  }
+
+  function toggle(index: number): void {
+    if (isSelected(index)) {
+      unselect(index)
+    } else {
+      select(index)
+    }
+  }
+
+  function select(index: number): void {
+    setSelectedIndexes(selectedIndexes => {
+      const result = new Set(selectedIndexes)
+      result.add(index)
+      return result
+    })
+  }
+
+  function unselect(index: number): void {
+    setSelectedIndexes(selectedIndexes => {
+      const result = new Set(selectedIndexes)
+      result.delete(index)
+      return result
+    })
+  }
 }
