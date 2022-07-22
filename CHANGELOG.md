@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.2.1...v0.3.0) (2022-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* - Rewrite `useSingleSelection`
+- Rewrite `useMultipleSelection`
+
+### Features
+
+* add useUnmount, useIIFE ([fb5eb9d](https://github.com/BlackGlory/extra-react-hooks/commit/fb5eb9d181c461c2eeac9f497b7a551482763049))
+
+
+### Bug Fixes
+
+* add props into deps ([def8482](https://github.com/BlackGlory/extra-react-hooks/commit/def8482f3d944bd304cf834e89fa5154b0dbb223))
+
+
+* improve hooks ([69932c2](https://github.com/BlackGlory/extra-react-hooks/commit/69932c2d2a420dc04225dcf245a2bbc3fd03f1fd))
+
 ### [0.2.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.2.0...v0.2.1) (2022-07-21)
 
 ## [0.2.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.1.15...v0.2.0) (2022-07-21)
