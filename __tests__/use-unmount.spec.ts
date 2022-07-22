@@ -1,25 +1,25 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useMount } from '@src/use-mount'
+import { useUnmount } from '@src/use-unmount'
 
-describe('useMount(effect: EffectCallback): void', () => {
+describe('useUnmount(effect: () => void): void', () => {
   it('mount', () => {
     const fn = jasmine.createSpy()
-    const { rerender } = renderHook(() => useMount(fn))
+    renderHook(() => useUnmount(fn))
 
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(0)
   })
 
   it('rerender', () => {
     const fn = jasmine.createSpy()
-    const { rerender } = renderHook(() => useMount(fn))
+    const { rerender } = renderHook(() => useUnmount(fn))
 
     rerender()
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(0)
   })
 
   it('unmount', () => {
     const fn = jasmine.createSpy()
-    const { unmount } = renderHook(() => useMount(() => fn))
+    const { unmount } = renderHook(() => useUnmount(fn))
 
     expect(fn).toHaveBeenCalledTimes(0)
     unmount()

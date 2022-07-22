@@ -3,6 +3,7 @@ import { assert } from '@blackglory/errors'
 import { toArray } from 'iterable-operator'
 import { NonEmptyArray } from 'justypes'
 import { IOptionState } from '@src/types'
+import { useIIFE } from '@src/use-iife'
 
 export function useMultipleSelection<T>(
   options: NonEmptyArray<T>
@@ -14,12 +15,14 @@ export function useMultipleSelection<T>(
   select: (index: number) => void
   unselect: (index: number) => void
 } {
-  for (const index of defaultSelectedIndexes) {
-    assert(
-      index >= 0 && index < options.length
-    , 'The index of parameter defaultSelectedIndexes must be in the range of 0 to values.length'
-    )
-  }
+  useIIFE(() => {
+    for (const index of defaultSelectedIndexes) {
+      assert(
+        index >= 0 && index < options.length
+      , 'The index of parameter defaultSelectedIndexes must be in the range of 0 to values.length'
+      )
+    }
+  }, [defaultSelectedIndexes])
 
   const [selectedIndexes, setSelectedIndexes] = useState(new Set(defaultSelectedIndexes))
 

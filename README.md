@@ -49,6 +49,11 @@ function useMultipleSelection<T>(
 function useMount(effect: EffectCallback): void
 ```
 
+### useUnmount
+```ts
+function useUnmount(effect: () => void): void 
+```
+
 ### useUpdateEffect
 ```ts
 function useUpdateEffect(
@@ -118,4 +123,9 @@ The `ObservableFiniteStateMachine` comes from [@blackglory/structures].
 ### useRenderCounter
 ```ts
 function useRenderCounter(): number
+```
+
+### useIIFE
+```ts
+function useIIFE(iife: () => void, deps: React.DependencyList): void
 ```

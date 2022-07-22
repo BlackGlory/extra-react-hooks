@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react'
 import { assert } from '@blackglory/errors'
 import { NonEmptyArray } from 'justypes'
 import { IOptionState } from '@src/types'
+import { useIIFE } from '@src/use-iife'
 
 export function useSingleSelection<T>(
   options: NonEmptyArray<T>
@@ -11,10 +12,12 @@ export function useSingleSelection<T>(
   optionStates: IOptionState[]
   select: (index: number) => void
 } {
-  assert(
-    defaultSelectedIndex >= 0 && defaultSelectedIndex < options.length
-  , 'The parameter defaultSelectedIndex must be in the range of 0 to values.length'
-  )
+  useIIFE(() => {
+    assert(
+      defaultSelectedIndex >= 0 && defaultSelectedIndex < options.length
+    , 'The parameter defaultSelectedIndex must be in the range of 0 to values.length'
+    )
+  }, [defaultSelectedIndex])
 
   const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
 
