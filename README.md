@@ -116,9 +116,9 @@ function useFiniteStateMachine<State extends string, Event extends string>(
 ): ObservableFiniteStateMachine<State, Event>
 ```
 
-The `ObservableFiniteStateMachine` comes from [@blackglory/structures].
+The `ObservableFiniteStateMachine` comes from [extra-fsm].
 
-[@blackglory/structures]: https://www.npmjs.com/package/@blackglory/structures
+[extra-fsm]: https://www.npmjs.com/package/extra-fsm
 
 ### useRenderCounter
 ```ts

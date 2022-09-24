@@ -1,14 +1,11 @@
 import { useMemo, useEffect } from 'react'
-import {
-  ObservableFiniteStateMachine
-, IFiniteStateMachineSchema
-} from '@blackglory/structures'
+import { ObservableFiniteStateMachine, IFiniteStateMachineSchema } from 'extra-fsm'
 import { useForceUpdate } from './use-force-update'
 
-export {
+export type {
   ObservableFiniteStateMachine
 , IFiniteStateMachineSchema
-} from '@blackglory/structures'
+} from 'extra-fsm'
 
 export function useFiniteStateMachine<State extends string, Event extends string>(
   schema: IFiniteStateMachineSchema<State, Event>
