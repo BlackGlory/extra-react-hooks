@@ -1,5 +1,5 @@
 import { useEffect, EffectCallback } from 'react'
-import { useIsFirstRender } from './use-is-first-render'
+import { useIsFirstRender } from './use-is-first-render.js'
 
 export function useUpdateEffect(
   effect: EffectCallback

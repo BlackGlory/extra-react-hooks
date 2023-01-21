@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useStep } from '@src/use-step'
+import { useStep } from '@src/use-step.js'
 import { NonEmptyArray } from 'justypes'
 
 describe(`

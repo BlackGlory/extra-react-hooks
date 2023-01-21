@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useIsFirstRender } from '@src/use-is-first-render'
+import { useIsFirstRender } from '@src/use-is-first-render.js'
 
 describe('useIsFirstRender(): () => boolean', () => {
   it('returns isFirstRender()', () => {

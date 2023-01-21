@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useForceUpdate } from '@src/use-force-update'
+import { useForceUpdate } from '@src/use-force-update.js'
 
 describe('useForceUpdate(): () => void', () => {
   it('returns same references', () => {

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useIIFE } from '@src/use-iife'
+import { useIIFE } from '@src/use-iife.js'
 
 describe('useIIFE(iife: () => void, deps: React.DependencyList): void', () => {
   it('mount', () => {

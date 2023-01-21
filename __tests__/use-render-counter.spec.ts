@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useRenderCounter } from '@src/use-render-counter'
+import { useRenderCounter } from '@src/use-render-counter.js'
 
 it('useRenderCounter(): number', () => {
   const { result, rerender } = renderHook(() => useRenderCounter())

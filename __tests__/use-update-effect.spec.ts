@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useUpdateEffect } from '@src/use-update-effect'
+import { useUpdateEffect } from '@src/use-update-effect.js'
 
 describe(`
   useUpdateEffect(

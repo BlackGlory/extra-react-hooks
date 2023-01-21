@@ -2,8 +2,8 @@ import { useState, useMemo, useCallback } from 'react'
 import { assert } from '@blackglory/errors'
 import { toArray } from 'iterable-operator'
 import { NonEmptyArray } from 'justypes'
-import { IOptionState } from '@src/types'
-import { useIIFE } from '@src/use-iife'
+import { IOptionState } from '@src/types.js'
+import { useIIFE } from '@src/use-iife.js'
 
 export function useMultipleSelection<T>(
   options: NonEmptyArray<T>

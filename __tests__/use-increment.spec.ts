@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useIncrement } from '@src/use-increment'
+import { useIncrement } from '@src/use-increment.js'
 
 describe(`
   useIncrement(initialValue: number): [

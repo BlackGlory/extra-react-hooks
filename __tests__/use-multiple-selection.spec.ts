@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useMultipleSelection } from '@src/use-multiple-selection'
+import { useMultipleSelection } from '@src/use-multiple-selection.js'
 import { NonEmptyArray } from 'justypes'
 
 describe('useMultipleSelection', () => {

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useIsFirstRender } from '@src/use-is-first-render'
+import { useIsFirstRender } from '@src/use-is-first-render.js'
 
 export function useIIFE(iife: () => void, deps: React.DependencyList): void {
   const oldDeps = useRef<React.DependencyList>([])

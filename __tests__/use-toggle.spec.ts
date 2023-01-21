@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useToggle } from '@src/use-toggle'
+import { useToggle } from '@src/use-toggle.js'
 
 describe('useToggle(initialState: boolean): [on: boolean, toggle: () => void]', () => {
   it('initialState', () => {

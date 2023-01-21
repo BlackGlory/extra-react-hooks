@@ -5,7 +5,7 @@
 
 import { useRef, useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { useResizeObserver } from '@src/use-resize-observer'
+import { useResizeObserver } from '@src/use-resize-observer.js'
 import { waitForTimeout } from '@blackglory/wait-for'
 
 describe(`

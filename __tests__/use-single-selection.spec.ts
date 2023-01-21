@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useSingleSelection } from '@src/use-single-selection'
+import { useSingleSelection } from '@src/use-single-selection.js'
 import { NonEmptyArray } from 'justypes'
 
 describe(`

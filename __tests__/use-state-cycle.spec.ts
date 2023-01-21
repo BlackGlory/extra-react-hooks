@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
-import { useStateCycle } from '@src/use-state-cycle'
+import { useStateCycle } from '@src/use-state-cycle.js'
 import { NonEmptyArray } from 'justypes'
 
 describe(`

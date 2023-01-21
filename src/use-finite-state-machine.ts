@@ -1,6 +1,6 @@
 import { useMemo, useEffect } from 'react'
 import { ObservableFiniteStateMachine, IFiniteStateMachineSchema } from 'extra-fsm'
-import { useForceUpdate } from './use-force-update'
+import { useForceUpdate } from './use-force-update.js'
 
 export type {
   ObservableFiniteStateMachine

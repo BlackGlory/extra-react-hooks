@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine'
+import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine.js'
 
 type State = 'on' | 'off'
 type Event = 'turnOff' | 'turnOn'
