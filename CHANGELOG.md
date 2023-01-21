@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.4.0...v0.4.1) (2023-01-21)
+
+
+### Bug Fixes
+
+* exports ([6782f4a](https://github.com/BlackGlory/extra-react-hooks/commit/6782f4a40921a8d5bc0fa4f38fc37b218ba5a989))
+
 ## [0.4.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.3.4...v0.4.0) (2023-01-21)
 
 
