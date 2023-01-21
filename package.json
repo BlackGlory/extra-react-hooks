@@ -61,7 +61,7 @@
     "@blackglory/errors": "^2.2.2",
     "@blackglory/types": "^1.3.0",
     "extra-fsm": "^0.1.0",
-    "iterable-operator": "^2.1.0",
+    "iterable-operator": "^2.1.0 || ^3.0.0",
     "justypes": "^3.0.0",
     "rxjs": "^7.5.6"
   },
