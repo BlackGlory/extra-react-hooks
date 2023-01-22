@@ -62,8 +62,8 @@
   },
   "dependencies": {
     "@blackglory/errors": "^2.4.3",
-    "@blackglory/types": "^1.4.0",
     "extra-fsm": "^0.1.1",
+    "extra-utils": "^5.0.1",
     "iterable-operator": "^4.0.0",
     "justypes": "^4.1.0",
     "rxjs": "^7.8.0"

@@ -1,5 +1,5 @@
 import { useEffect, RefObject, MutableRefObject } from 'react'
-import { isntNull } from '@blackglory/types'
+import { isntNull } from 'extra-utils'
 
 export function useResizeObserver(
   callback: ResizeObserverCallback
