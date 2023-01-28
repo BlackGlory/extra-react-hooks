@@ -30,7 +30,7 @@
     }
   },
   "devDependencies": {
-    "@blackglory/wait-for": "^0.6.0",
+    "@blackglory/wait-for": "^0.5.4",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@testing-library/react": "^13.4.0",
@@ -64,7 +64,7 @@
     "@blackglory/errors": "^2.4.3",
     "extra-fsm": "^0.1.1",
     "extra-utils": "^5.0.1",
-    "iterable-operator": "^4.0.0",
+    "iterable-operator": "^2.5.0",
     "justypes": "^4.1.0",
     "rxjs": "^7.8.0"
   },
