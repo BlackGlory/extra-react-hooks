@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 import { useMount } from '@src/use-mount.js'
 
 describe('useMount(effect: EffectCallback): void', () => {

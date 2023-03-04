@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 import { useUnmount } from '@src/use-unmount.js'
 
 describe('useUnmount(effect: () => void): void', () => {

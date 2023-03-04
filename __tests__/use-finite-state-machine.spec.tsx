@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine.js'
 
 type State = 'on' | 'off'

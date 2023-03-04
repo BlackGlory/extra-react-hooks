@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 import { useIIFE } from '@src/use-iife.js'
 
 describe('useIIFE(iife: () => void, deps: React.DependencyList): void', () => {

@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks/dom'
+import { renderHook, act } from '@testing-library/react'
 import { useStateCycle } from '@src/use-state-cycle.js'
 import { NonEmptyArray } from 'justypes'
 

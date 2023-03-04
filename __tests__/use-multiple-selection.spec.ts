@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks/dom'
+import { renderHook, act } from '@testing-library/react'
 import { useMultipleSelection } from '@src/use-multiple-selection.js'
 import { NonEmptyArray } from 'justypes'
 

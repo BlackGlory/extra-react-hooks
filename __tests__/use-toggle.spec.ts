@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks/dom'
+import { renderHook, act } from '@testing-library/react'
 import { useToggle } from '@src/use-toggle.js'
 
 describe('useToggle(initialState: boolean): [on: boolean, toggle: () => void]', () => {

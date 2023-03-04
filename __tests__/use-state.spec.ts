@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 
 describe('useState', () => {
   it('does not return the same array', () => {
