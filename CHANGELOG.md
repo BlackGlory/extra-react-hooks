@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.4.3...v0.5.0) (2023-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* The minimal version of Node.js is 16
+
+* upgrade dependencies ([c4f0e97](https://github.com/BlackGlory/extra-react-hooks/commit/c4f0e97c89e752491a4bc2a036946c54c70a8929))
+
 ### [0.4.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.4.2...v0.4.3) (2023-01-28)
 
 
