@@ -33,15 +33,15 @@
     }
   },
   "devDependencies": {
-    "@blackglory/wait-for": "^0.6.0",
-    "@commitlint/cli": "^17.4.4",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@blackglory/wait-for": "^0.7.3",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@testing-library/react": "^14.0.0",
     "@types/jasmine": "^4.3.1",
-    "@types/react": "^18.0.28",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
-    "eslint": "^8.35.0",
+    "@types/react": "^18.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "4",
     "karma": "^6.4.1",
@@ -56,18 +56,18 @@
     "standard-version": "^9.3.2",
     "ts-loader": "^9.4.2",
     "ts-patch": "^2.1.0",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
     "tslib": "^2.4.1",
     "typescript": "4.9.5",
     "typescript-transform-paths": "^3.4.6",
-    "webpack": "^5.75.0"
+    "webpack": "^5.79.0"
   },
   "dependencies": {
-    "@blackglory/errors": "^3.0.0",
-    "extra-fsm": "^0.1.1",
-    "extra-utils": "^5.1.0",
-    "iterable-operator": "^4.0.3",
-    "justypes": "^4.1.0",
+    "@blackglory/errors": "^3.0.2",
+    "extra-fsm": "^0.2.0",
+    "extra-utils": "^5.1.1",
+    "iterable-operator": "^4.0.6",
+    "justypes": "^4.2.0",
     "rxjs": "^7.8.0"
   },
   "peerDependencies": {
