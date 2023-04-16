@@ -110,7 +110,7 @@
     iterable-operator "^2.5.0"
     justypes "^4.1.0"
 
-"@blackglory/prelude@^0.3.0", "@blackglory/prelude@^0.3.1":
+"@blackglory/prelude@^0.3.0", "@blackglory/prelude@^0.3.1", "@blackglory/prelude@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@blackglory/prelude/-/prelude-0.3.2.tgz#d3a8e1efc14d28969a7f156f6781d0045ad9c581"
   integrity sha512-6ZdGYIXoDdB7Vw4oVagLdgT8Ud4D+H4JUxSQBHeNfJAmCZbg9Nj/IqhwXXnGBmihXtu6BHJBN+MxssFtUQEzzw==

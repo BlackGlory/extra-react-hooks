@@ -54,6 +54,22 @@ function useMount(effect: EffectCallback): void
 function useUnmount(effect: () => void): void 
 ```
 
+### useEffectAsync
+```ts
+function useEffectAsync(
+  effect: (signal: AbortSignal) => Promise<void>
+, deps?: DependencyList
+): void
+```
+
+### useCallbackAsync
+```ts
+function useCallbackAsync<Args extends unknown[]>(
+  callback: (...args: [...args: Args, signal: AbortSignal]) => Promise<void>
+, deps: DependencyList
+): (...args: Args) => void
+```
+
 ### useUpdateEffect
 ```ts
 function useUpdateEffect(
