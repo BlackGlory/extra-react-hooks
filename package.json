@@ -63,13 +63,9 @@
     "webpack": "^5.79.0"
   },
   "dependencies": {
-    "@blackglory/errors": "^3.0.2",
     "@blackglory/prelude": "^0.3.2",
     "extra-abort": "^0.3.6",
     "extra-fsm": "^0.2.0",
-    "extra-utils": "^5.1.1",
-    "iterable-operator": "^4.0.6",
-    "justypes": "^4.2.0",
     "rxjs": "^7.8.0"
   },
   "peerDependencies": {

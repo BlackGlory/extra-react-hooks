@@ -1,6 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
-import { assert } from '@blackglory/errors'
-import { NonEmptyArray } from 'justypes'
+import { assert, NonEmptyArray } from '@blackglory/prelude'
 import { IOptionState } from '@src/types.js'
 import { useIIFE } from '@src/use-iife.js'
 

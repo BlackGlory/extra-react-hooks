@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { NonEmptyArray } from 'justypes'
+import { NonEmptyArray } from '@blackglory/prelude'
 
 export function useStateCycle<T>(
   orderedStates: NonEmptyArray<T>
