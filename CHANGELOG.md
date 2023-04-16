@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.5.0...v0.5.1) (2023-04-16)
+
+
+### Features
+
+* add `useEffectAsync`, `useCallbackAsync` ([f01bf2e](https://github.com/BlackGlory/extra-react-hooks/commit/f01bf2ed298ff741806b93a098c842671e9fe492))
+
 ## [0.5.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.4.3...v0.5.0) (2023-03-04)
 
 
