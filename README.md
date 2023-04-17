@@ -49,6 +49,11 @@ function useMultipleSelection<T>(
 function useMount(effect: EffectCallback): void
 ```
 
+### useMountAsync
+```ts
+function useMountAsync(effect: (signal: AbortSignal) => Promise<void>): void
+```
+
 ### useUnmount
 ```ts
 function useUnmount(effect: () => void): void 

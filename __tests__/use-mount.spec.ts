@@ -4,7 +4,8 @@ import { useMount } from '@src/use-mount.js'
 describe('useMount(effect: EffectCallback): void', () => {
   it('mount', () => {
     const fn = jasmine.createSpy()
-    const { rerender } = renderHook(() => useMount(fn))
+
+    renderHook(() => useMount(fn))
 
     expect(fn).toHaveBeenCalledTimes(1)
   })
@@ -14,6 +15,7 @@ describe('useMount(effect: EffectCallback): void', () => {
     const { rerender } = renderHook(() => useMount(fn))
 
     rerender()
+
     expect(fn).toHaveBeenCalledTimes(1)
   })
 
