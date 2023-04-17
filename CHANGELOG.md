@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.5.1...v0.5.2) (2023-04-17)
+
+
+### Features
+
+* add `useMountAsync` ([90f43bd](https://github.com/BlackGlory/extra-react-hooks/commit/90f43bd05005f6f80653405e209c3ccfb96265d9))
+
 ### [0.5.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.5.0...v0.5.1) (2023-04-16)
 
 
