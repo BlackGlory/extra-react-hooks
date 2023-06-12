@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/BlackGlory/extra-react-hooks/compare/v0.5.3...v0.5.4) (2023-06-12)
+
+
+### Bug Fixes
+
+* deps for React 18 ([4b98acd](https://github.com/BlackGlory/extra-react-hooks/commit/4b98acd9fee6bca2ae448e6628bf6c016c8ce994))
+
 ### [0.5.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.5.2...v0.5.3) (2023-06-10)
 
 
