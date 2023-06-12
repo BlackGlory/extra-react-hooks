@@ -1,5 +1,5 @@
-import { render, fireEvent } from '@testing-library/react'
-import { renderHook } from '@testing-library/react'
+import React from 'react'
+import { render, fireEvent, renderHook } from '@testing-library/react'
 import { useForceUpdate } from '@src/use-force-update.js'
 
 describe('useForceUpdate(): () => void', () => {
