@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, fireEvent, renderHook } from '@testing-library/react'
 import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine.js'
 

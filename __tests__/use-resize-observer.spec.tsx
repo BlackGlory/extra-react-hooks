@@ -3,7 +3,7 @@
 // - 现有的Polyfill会通过`element.getBoundingClientRect()`等方式检查元素的尺寸,
 //   但由于JSDOM不执行渲染, 因此这些函数总是返回不可用的结果, 这使得Polyfill也无法运行.
 
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { useResizeObserver } from '@src/use-resize-observer.js'
 import { waitForTimeout } from '@blackglory/wait-for'
