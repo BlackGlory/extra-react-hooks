@@ -9,7 +9,7 @@ export function useCallbackAsync<Args extends unknown[]>(
 , deps: DependencyList
 ): (...args: Args) => void {
   const controller = useMemo(() => new AbortController(), deps)
-  useEffect(() => () => controller.abort(abort), deps)
+  useEffect(() => () => controller.abort(abort), [controller])
 
   return useCallback((...args: Args) => {
     go(async () => {
@@ -19,5 +19,5 @@ export function useCallbackAsync<Args extends unknown[]>(
         if (err !== abort) throw err
       }
     })
-  }, deps)
+  }, [callback, controller])
 }
