@@ -150,3 +150,19 @@ function useRenderCounter(): number
 ```ts
 function useIIFE(iife: () => void, deps: React.DependencyList): void
 ```
+
+### useMemoWithCleanup
+```ts
+function useMemoWithCleanup<T>(
+  factory: () => T
+, cleanup: (value: T) => void
+, deps?: React.DependencyList
+): T
+```
+
+### useGetSet
+```ts
+function useGetSet<T>(
+  initialValue: T
+): [get: () => T, set: (value: T) => void]
+```

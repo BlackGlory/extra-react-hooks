@@ -1,25 +1,27 @@
-import { useLayoutEffect, useCallback, useMemo, DependencyList } from 'react'
+import { useCallback, DependencyList } from 'react'
 import { go } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
+import { useMemoWithCleanup } from './use-memo-with-cleanup.js'
 
-const abort = Symbol()
+const symbolAbort = Symbol()
 
 export function useCallbackAsync<Args extends unknown[]>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => Promise<void>
 , deps: DependencyList
 ): (...args: Args) => void {
-  const controller = useMemo(() => new AbortController(), deps)
-  useLayoutEffect(() => {
-    return () => controller.abort(abort)
-  }, [controller])
+  const controller = useMemoWithCleanup(
+    () => new AbortController()
+  , controller => controller.abort(symbolAbort)
+  , deps
+  )
 
   return useCallback((...args: Args) => {
     go(async () => {
       try {
         await callback(...args, controller.signal)
       } catch (err) {
-        if (err !== abort) throw err
+        if (err !== symbolAbort) throw err
       }
     })
-  }, [controller])
+  }, deps)
 }
