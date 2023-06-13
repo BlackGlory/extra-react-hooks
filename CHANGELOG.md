@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.1...v0.6.2) (2023-06-13)
+
+
+### Bug Fixes
+
+* **useCallbackAsync:** replace useEffect with useLayoutEffect ([8f8f5f5](https://github.com/BlackGlory/extra-react-hooks/commit/8f8f5f511444bd30132e9eadb781a1a72ccbacb3))
+
 ### [0.6.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.0...v0.6.1) (2023-06-13)
 
 
