@@ -19,5 +19,5 @@ export function useCallbackAsync<Args extends unknown[]>(
         if (err !== abort) throw err
       }
     })
-  }, [callback, controller])
+  }, [controller])
 }
