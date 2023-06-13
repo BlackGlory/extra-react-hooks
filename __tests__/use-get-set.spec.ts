@@ -24,16 +24,52 @@ describe(`
     expect(set2).toBe(set1)
   })
 
-  it('set', () => {
-    const { result } = renderHook(() => useGetSet(1))
+  describe('get & set', () => {
+    it('set same value', () => {
+      let renderCount = 0
+      const { result } = renderHook(() => {
+        renderCount++
+        return useGetSet(1)
+      })
 
-    act(() => {
-      const [get, set] = result.current
-      set(get() + 1)
-      set(get() + 1)
+      act(() => {
+        const [get, set] = result.current
+        set(1)
+      })
+
+      const [get] = result.current
+      expect(renderCount).toBe(1)
+      expect(get()).toBe(1)
     })
 
-    const [get] = result.current
-    expect(get()).toBe(3)
+    it('set diff value', () => {
+      let renderCount = 0
+      const { result } = renderHook(() => {
+        renderCount++
+        return useGetSet(1)
+      })
+
+      act(() => {
+        const [get, set] = result.current
+        set(2)
+      })
+
+      const [get] = result.current
+      expect(renderCount).toBe(2)
+      expect(get()).toBe(2)
+    })
+
+    it('get latest state', () => {
+      const { result } = renderHook(() => useGetSet(1))
+
+      let value: number | undefined
+      act(() => {
+        const [get, set] = result.current
+        set(get() + 1)
+        value = get()
+      })
+
+      expect(value).toBe(2)
+    })
   })
 })
