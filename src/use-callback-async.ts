@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useMemo, DependencyList } from 'react'
+import { useLayoutEffect, useCallback, useMemo, DependencyList } from 'react'
 import { go } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
 
@@ -9,7 +9,9 @@ export function useCallbackAsync<Args extends unknown[]>(
 , deps: DependencyList
 ): (...args: Args) => void {
   const controller = useMemo(() => new AbortController(), deps)
-  useEffect(() => () => controller.abort(abort), [controller])
+  useLayoutEffect(() => {
+    return () => controller.abort(abort)
+  }, [controller])
 
   return useCallback((...args: Args) => {
     go(async () => {
