@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.2...v0.6.3) (2023-06-13)
+
+
+### Features
+
+* add `useMemoWithCleanup`, `useGetSet` ([9ed180b](https://github.com/BlackGlory/extra-react-hooks/commit/9ed180be34e193371ea6c2beb3adcf2e6ce6356c))
+
 ### [0.6.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.1...v0.6.2) (2023-06-13)
 
 
