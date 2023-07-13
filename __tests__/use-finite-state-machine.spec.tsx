@@ -1,4 +1,4 @@
-import { render, fireEvent, renderHook } from '@testing-library/react'
+import { render, fireEvent, renderHook, screen } from '@testing-library/react'
 import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine.js'
 
 type State = 'on' | 'off'
@@ -28,23 +28,23 @@ describe(`
   it('no change state', () => {
     const fn = jasmine.createSpy()
 
-    const { queryByText } = render(
+    render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
     )
 
-    expect(queryByText('state: on')).not.toBeNull()
+    expect(screen.queryByText('state: on')).not.toBeNull()
     expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('change state', async () => {
     const fn = jasmine.createSpy()
 
-    const { getByText, queryByText } = render(
+    render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
     )
-    fireEvent.click(getByText('turnOff'))
+    fireEvent.click(screen.getByText('turnOff'))
 
-    expect(queryByText('state: off')).not.toBeNull()
+    expect(screen.queryByText('state: off')).not.toBeNull()
     expect(fn).toHaveBeenCalledTimes(2)
   })
 })

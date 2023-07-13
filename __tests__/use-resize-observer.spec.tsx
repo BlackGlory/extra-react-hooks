@@ -4,7 +4,7 @@
 //   但由于JSDOM不执行渲染, 因此这些函数总是返回不可用的结果, 这使得Polyfill也无法运行.
 
 import { useRef, useState } from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import { useResizeObserver } from '@src/use-resize-observer.js'
 import { waitForTimeout } from '@blackglory/wait-for'
 
@@ -25,8 +25,8 @@ describe(`
   it('resize', async () => {
     const fn = jasmine.createSpy()
 
-    const { getByText } = render(<Tester>{fn}</Tester>)
-    fireEvent.click(getByText('Resize'))
+    render(<Tester>{fn}</Tester>)
+    fireEvent.click(screen.getByText('Resize'))
     await waitForTimeout(1000)
 
     expect(fn).toHaveBeenCalledTimes(1)

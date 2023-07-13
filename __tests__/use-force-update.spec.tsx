@@ -1,4 +1,4 @@
-import { render, fireEvent, renderHook } from '@testing-library/react'
+import { render, fireEvent, renderHook, screen } from '@testing-library/react'
 import { useForceUpdate } from '@src/use-force-update.js'
 
 describe('useForceUpdate(): () => void', () => {
@@ -23,8 +23,8 @@ describe('useForceUpdate(): () => void', () => {
   it('update', () => {
     const fn = jasmine.createSpy()
 
-    const { getByText } = render(<Tester>{fn}</Tester>)
-    fireEvent.click(getByText('Force Update'))
+    render(<Tester>{fn}</Tester>)
+    fireEvent.click(screen.getByText('Force Update'))
 
     expect(fn).toHaveBeenCalledTimes(2)
   })
