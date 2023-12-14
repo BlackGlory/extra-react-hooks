@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.3...v0.6.4) (2023-12-14)
+
+
+### Features
+
+* add `useIntersectionObserver` ([4f0a301](https://github.com/BlackGlory/extra-react-hooks/commit/4f0a3014c35852bf6636ac29b85361932eb52c4e))
+
 ### [0.6.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.2...v0.6.3) (2023-06-13)
 
 
