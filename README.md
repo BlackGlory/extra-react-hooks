@@ -116,6 +116,19 @@ function useResizeObserver(
 ): void
 ```
 
+### useIntersectionObserver
+```ts
+function useIntersectionObserver(
+  callback: IntersectionObserverCallback
+, options: IntersectionObserverInit | undefined
+, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+): void
+function useIntersectionObserver(
+  callback: IntersectionObserverCallback
+, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+): void
+```
+
 ### useStep
 ```ts
 function useStep<T>(
