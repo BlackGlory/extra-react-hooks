@@ -13,7 +13,7 @@ describe('useIntersectionObserver', () => {
     render(<Tester>{fn}</Tester>)
     await waitForTimeout(500)
 
-    // 出于未知原因, karma测试会自动调用回调函数一次
+    // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
     expect(fn).toHaveBeenCalledTimes(1)
     expect(fn.calls.argsFor(0)[0][0].isIntersecting).toBe(false)
   })

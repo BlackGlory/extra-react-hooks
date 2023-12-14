@@ -15,7 +15,7 @@ describe('useResizeObserver', () => {
     render(<Tester>{fn}</Tester>)
     await waitForTimeout(500)
 
-    // 出于未知原因, karma测试会自动调用回调函数一次
+    // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
     expect(fn).toHaveBeenCalledTimes(1)
   })
 
