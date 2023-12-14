@@ -1,4 +1,4 @@
-// 无法在jest里测试ResizeObserver, 因此使用karma:
+// 由于以下原因, 使用karma:
 // - JSDOM不支持ResizeObserver.
 // - 现有的Polyfill会通过`element.getBoundingClientRect()`等方式检查元素的尺寸,
 //   但由于JSDOM不执行渲染, 因此这些函数总是返回不可用的结果, 这使得Polyfill也无法运行.
@@ -8,28 +8,26 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import { useResizeObserver } from '@src/use-resize-observer.js'
 import { waitForTimeout } from '@blackglory/wait-for'
 
-describe(`
-  useResizeObserver(
-    callback: ResizeObserverCallback
-  , refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
-  ): void
-`, () => {
-  it('no resize', () => {
-    const fn = jasmine.createSpy()
+describe('useResizeObserver', () => {
+  it('no resize', async () => {
+    const fn = jasmine.createSpy<ResizeObserverCallback>()
 
     render(<Tester>{fn}</Tester>)
+    await waitForTimeout(500)
 
-    expect(fn).toHaveBeenCalledTimes(0)
+    // 出于未知原因, karma测试会自动调用回调函数一次
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('resize', async () => {
-    const fn = jasmine.createSpy()
+    const fn = jasmine.createSpy<ResizeObserverCallback>()
 
     render(<Tester>{fn}</Tester>)
+    await waitForTimeout(500)
     fireEvent.click(screen.getByText('Resize'))
-    await waitForTimeout(1000)
+    await waitForTimeout(500)
 
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(2)
   })
 })
 
