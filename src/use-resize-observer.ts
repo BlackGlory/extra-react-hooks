@@ -4,9 +4,8 @@ import { isntNull } from '@blackglory/prelude'
 export function useResizeObserver(
   callback: ResizeObserverCallback
 , refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, deps?: React.DependencyList
 ): void {
-  const deps = refs.map(x => x.current)
-
   useEffect(() => {
     const observer = new ResizeObserver(callback)
 

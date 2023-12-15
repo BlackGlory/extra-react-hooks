@@ -12,7 +12,7 @@ describe('useResizeObserver', () => {
   it('no resize', async () => {
     const fn = jasmine.createSpy<ResizeObserverCallback>()
 
-    render(<Tester>{fn}</Tester>)
+    render(<Tester callback={fn} />)
     await waitForTimeout(500)
 
     // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
@@ -22,19 +22,73 @@ describe('useResizeObserver', () => {
   it('resize', async () => {
     const fn = jasmine.createSpy<ResizeObserverCallback>()
 
-    render(<Tester>{fn}</Tester>)
+    render(<Tester callback={fn} />)
     await waitForTimeout(500)
     fireEvent.click(screen.getByText('Resize'))
     await waitForTimeout(500)
 
+    // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
     expect(fn).toHaveBeenCalledTimes(2)
+  })
+
+  describe('deps', () => {
+    it('no deps', async () => {
+      const fn = jasmine.createSpy<ResizeObserverCallback>()
+
+      const { rerender } = render(<Tester callback={fn} />)
+      await waitForTimeout(500)
+      rerender(<Tester callback={fn} />)
+      await waitForTimeout(500)
+
+      // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
+      expect(fn).toHaveBeenCalledTimes(2)
+    })
+
+    it('empty deps', async () => {
+      const fn = jasmine.createSpy<ResizeObserverCallback>()
+
+      const { rerender } = render(<Tester callback={fn} deps={[]} />)
+      await waitForTimeout(500)
+      rerender(<Tester callback={fn} deps={[]} />)
+      await waitForTimeout(500)
+
+      // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
+      expect(fn).toHaveBeenCalledTimes(1)
+    })
+
+    it('same deps', async () => {
+      const fn = jasmine.createSpy<ResizeObserverCallback>()
+
+      const { rerender } = render(<Tester callback={fn} deps={[0]} />)
+      await waitForTimeout(500)
+      rerender(<Tester callback={fn} deps={[0]} />)
+      await waitForTimeout(500)
+
+      // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
+      expect(fn).toHaveBeenCalledTimes(1)
+    })
+
+    it('diff deps', async () => {
+      const fn = jasmine.createSpy<ResizeObserverCallback>()
+
+      const { rerender } = render(<Tester callback={fn} deps={[0]} />)
+      await waitForTimeout(500)
+      rerender(<Tester callback={fn} deps={[1]} />)
+      await waitForTimeout(500)
+
+      // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
+      expect(fn).toHaveBeenCalledTimes(2)
+    })
   })
 })
 
-function Tester(props: { children: ResizeObserverCallback }) {
+function Tester({ callback, deps }: {
+  callback: ResizeObserverCallback
+  deps?: React.DependencyList
+}) {
   const [sideLength, setSideLength] = useState(10)
   const ref = useRef<HTMLDivElement>(null)
-  useResizeObserver(props.children, [ref])
+  useResizeObserver(callback, [ref], deps)
 
   return <>
     <div
