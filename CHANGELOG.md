@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.6](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.5...v0.6.6) (2023-12-29)
+
+
+### Bug Fixes
+
+* **useEffectAsync:** catch internal reason ([1ff7dfb](https://github.com/BlackGlory/extra-react-hooks/commit/1ff7dfb94841b7f6d6b6d4cc7823e62c7c4a1716))
+
 ### [0.6.5](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.4...v0.6.5) (2023-12-15)
 
 
