@@ -1,9 +1,10 @@
 import { useCallback, DependencyList } from 'react'
-import { go } from '@blackglory/prelude'
+import { go, pass } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
 import { useMemoWithCleanup } from './use-memo-with-cleanup.js'
+import { CustomError } from '@blackglory/errors'
 
-const symbolAbort = Symbol()
+class InternalAbortError extends CustomError {}
 
 export function useCallbackAsync<Args extends unknown[]>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => Promise<void>
@@ -11,7 +12,7 @@ export function useCallbackAsync<Args extends unknown[]>(
 ): (...args: Args) => void {
   const controller = useMemoWithCleanup(
     () => new AbortController()
-  , controller => controller.abort(symbolAbort)
+  , controller => controller.abort(new InternalAbortError())
   , deps
   )
 
@@ -20,7 +21,11 @@ export function useCallbackAsync<Args extends unknown[]>(
       try {
         await callback(...args, controller.signal)
       } catch (err) {
-        if (err !== symbolAbort) throw err
+        if (err instanceof InternalAbortError) {
+          pass()
+        } else {
+          throw err
+        }
       }
     })
   }, deps)

@@ -1,8 +1,9 @@
 import { useEffect, DependencyList } from 'react'
-import { go } from '@blackglory/prelude'
+import { go, pass } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
+import { CustomError } from '@blackglory/errors'
 
-const symbolAbort = Symbol()
+class InternalAbortError extends CustomError {}
 
 export function useEffectAsync(
   effect: (signal: AbortSignal) => Promise<void>
@@ -15,10 +16,14 @@ export function useEffectAsync(
       try {
         await effect(controller.signal)
       } catch (err) {
-        if (err !== symbolAbort) throw err
+        if (err instanceof InternalAbortError) {
+          pass()
+        } else {
+          throw err
+        }
       }
     })
 
-    return () => controller.abort(symbolAbort)
+    return () => controller.abort(new InternalAbortError())
   }, deps)
 }
