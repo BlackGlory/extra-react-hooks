@@ -2,7 +2,7 @@ import { useEffect, DependencyList } from 'react'
 import { go } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
 
-const abort = Symbol()
+const symbolAbort = Symbol()
 
 export function useEffectAsync(
   effect: (signal: AbortSignal) => Promise<void>
@@ -15,10 +15,10 @@ export function useEffectAsync(
       try {
         await effect(controller.signal)
       } catch (err) {
-        if (err !== abort) throw err
+        if (err !== symbolAbort) throw err
       }
     })
 
-    return () => controller.abort()
+    return () => controller.abort(symbolAbort)
   }, deps)
 }
