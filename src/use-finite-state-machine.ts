@@ -7,7 +7,10 @@ export type {
 , IFiniteStateMachineSchema
 } from 'extra-fsm'
 
-export function useFiniteStateMachine<State extends string, Event extends string>(
+export function useFiniteStateMachine<
+  State extends string | number | symbol
+, Event extends string | number | symbol
+>(
   schema: IFiniteStateMachineSchema<State, Event>
 , initialState: State
 ): ObservableFiniteStateMachine<State, Event> {

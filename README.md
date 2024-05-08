@@ -147,7 +147,10 @@ function useForceUpdate(): () => void
 
 ### useFiniteStateMachine
 ```ts
-function useFiniteStateMachine<State extends string, Event extends string>(
+function useFiniteStateMachine<
+  State extends string | number | symbol
+, Event extends string | number | symbol
+>(
   schema: IFiniteStateMachineSchema<State, Event>
 , initialState: State
 ): ObservableFiniteStateMachine<State, Event>
