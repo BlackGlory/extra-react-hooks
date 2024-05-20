@@ -185,3 +185,11 @@ function useGetSet<T>(
   initialValue: T
 ): [get: () => T, set: (value: T) => void]
 ```
+
+### useIsomorphicLayoutEffect
+```ts
+function useIsomorphicLayoutEffect(
+  effect: EffectCallback
+, deps?: DependencyList
+): void
+```
