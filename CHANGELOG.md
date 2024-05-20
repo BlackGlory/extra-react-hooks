@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.9](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.8...v0.6.9) (2024-05-20)
+
+
+### Features
+
+* add `useIsomorphicLayoutEffect` ([7f3d87d](https://github.com/BlackGlory/extra-react-hooks/commit/7f3d87d96d71103ccf69dcf55a9c010f13b5cd59))
+
 ### [0.6.8](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.7...v0.6.8) (2024-05-08)
 
 
