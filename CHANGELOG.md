@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.9...v0.7.0) (2024-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v16 => v18.17.0
+* Removed `useCallbackAsync`
+
+### Features
+
+* add `useAbortableCallback` ([cb8f02c](https://github.com/BlackGlory/extra-react-hooks/commit/cb8f02c932be6e3a07366f9f1e9333f778f661a2))
+* rewrite `useAbortableCallback` ([8b51b34](https://github.com/BlackGlory/extra-react-hooks/commit/8b51b34cee777bd86abbb60d6839f89558559257))
+* **use-abortable-callback:** add support for custom signals ([e920087](https://github.com/BlackGlory/extra-react-hooks/commit/e920087120ed2ff9ce2d7840027618ef89bfbf9e))
+
 ### [0.6.9](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.8...v0.6.9) (2024-05-20)
 
 
