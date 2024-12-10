@@ -2260,6 +2260,14 @@ extra-utils@^5.1.1:
     justypes "^4.1.0"
     lodash-es "^4.17.21"
 
+extra-utils@^5.17.0:
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/extra-utils/-/extra-utils-5.17.0.tgz#f365209cdc891e48a2c17dbe033bc52304e3000d"
+  integrity sha512-vjMRt2m77UPmDBtGGoiCRqUsysVb8HUQf82egnCfiNnsWg4jq452kmCVMlQLMMkujlQJssId5GMLv0guQX7Qnw==
+  dependencies:
+    justypes "^4.2.0"
+    lodash-es "^4.17.21"
+
 extra-utils@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/extra-utils/-/extra-utils-5.2.0.tgz#2bb98f46a938610e00e37633885df98e306dd836"

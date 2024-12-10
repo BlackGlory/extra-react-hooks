@@ -69,6 +69,7 @@
     "@blackglory/prelude": "^0.3.3",
     "extra-abort": "^0.3.7",
     "extra-fsm": "^0.2.1",
+    "extra-utils": "^5.17.0",
     "rxjs": "^7.8.1"
   },
   "peerDependencies": {
