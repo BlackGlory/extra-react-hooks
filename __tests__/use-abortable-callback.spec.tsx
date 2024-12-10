@@ -1,12 +1,12 @@
 import { act, renderHook } from '@testing-library/react'
-import { useCallbackAsync } from '@src/use-callback-async.js'
+import { useAbortableCallback } from '@src/use-abortable-callback.js'
 import { AbortSignal } from 'extra-abort'
 
-describe('useCallbackAsync', () => {
+describe('useAbortableCallback', () => {
   it('call', () => {
     const fn = jasmine.createSpy()
 
-    const { result } = renderHook(() => useCallbackAsync(fn, []))
+    const { result } = renderHook(() => useAbortableCallback(fn, []))
     act(() => {
       const callback = result.current
       callback('foo')
@@ -22,7 +22,7 @@ describe('useCallbackAsync', () => {
     it('empty deps', () => {
       const fn = jasmine.createSpy()
 
-      const { result, rerender } = renderHook(() => useCallbackAsync(fn, []))
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn, []))
       const callback1 = result.current
       rerender()
       const callback2 = result.current
@@ -34,7 +34,7 @@ describe('useCallbackAsync', () => {
       const fn = jasmine.createSpy()
       const i = 0
 
-      const { result, rerender } = renderHook(() => useCallbackAsync(fn, [i]))
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i]))
       const callback1 = result.current
       rerender()
       const callback2 = result.current
@@ -46,7 +46,7 @@ describe('useCallbackAsync', () => {
       const fn = jasmine.createSpy()
       let i = 0
 
-      const { result, rerender } = renderHook(() => useCallbackAsync(fn, [i++]))
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i++]))
       const callback1 = result.current
       rerender()
       const callback2 = result.current
@@ -59,7 +59,7 @@ describe('useCallbackAsync', () => {
     it('mounted', () => {
       const fn = jasmine.createSpy()
 
-      const { result } = renderHook(() => useCallbackAsync(fn, []))
+      const { result } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
       callback()
 
@@ -72,7 +72,7 @@ describe('useCallbackAsync', () => {
     it('unmounted', () => {
       const fn = jasmine.createSpy()
 
-      const { result, unmount } = renderHook(() => useCallbackAsync(fn, []))
+      const { result, unmount } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
       callback()
       unmount()
@@ -87,7 +87,7 @@ describe('useCallbackAsync', () => {
       const fn = jasmine.createSpy()
       const i = 0
 
-      const { result, rerender } = renderHook(() => useCallbackAsync(fn, [i]))
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i]))
       const callback = result.current
       callback()
       rerender()
@@ -102,7 +102,7 @@ describe('useCallbackAsync', () => {
       const fn = jasmine.createSpy()
       let i = 0
 
-      const { result, rerender } = renderHook(() => useCallbackAsync(fn, [i++]))
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i++]))
       const callback = result.current
       callback()
       rerender()

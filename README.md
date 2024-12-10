@@ -67,12 +67,12 @@ function useEffectAsync(
 ): void
 ```
 
-### useCallbackAsync
+### useAbortableCallback
 ```ts
-function useCallbackAsync<Args extends unknown[]>(
-  callback: (...args: [...args: Args, signal: AbortSignal]) => Promise<void>
+function useAbortableCallback<Args extends unknown[], Result>(
+  callback: (...args: [...args: Args, signal: AbortSignal]) => Promise<Result>
 , deps: DependencyList
-): (...args: Args) => void
+): (...args: Args) => Promise<Result>
 ```
 
 ### useUpdateEffect
