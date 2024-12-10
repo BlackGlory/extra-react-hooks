@@ -70,10 +70,9 @@ function useEffectAsync(
 ### useAbortableCallback
 ```ts
 function useAbortableCallback<Args extends unknown[], Result>(
-  callback: (...args: [...args: Args, signal: AbortSignal]) => Result
+  callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
 , deps: DependencyList
-, isAbortSignal?: (value: unknown) => boolean
-): (...args: [...args: Args, signal?: AbortSignal]) => Result
+): (...args: [...args: Args, signal: AbortSignal]) => Promise<Result>
 ```
 
 ### useUpdateEffect

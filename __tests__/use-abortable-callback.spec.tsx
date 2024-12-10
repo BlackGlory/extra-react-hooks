@@ -1,21 +1,39 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import { useAbortableCallback } from '@src/use-abortable-callback.js'
-import { AbortSignal } from 'extra-abort'
+import { AbortSignal, AbortController } from 'extra-abort'
+import { getErrorPromise } from 'return-style'
 
 describe('useAbortableCallback', () => {
-  it('call', () => {
-    const fn = jasmine.createSpy()
+  describe('call', () => {
+    it('signal isnt aborted', async () => {
+      const fn = jasmine.createSpy().and.returnValue(Promise.resolve('bar'))
+      const controller = new AbortController()
 
-    const { result } = renderHook(() => useAbortableCallback(fn, []))
-    act(() => {
+      const { result } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
-      callback('foo')
+      const promiseResult = await callback('foo', controller.signal)
+
+      expect(fn).toHaveBeenCalledTimes(1)
+      const args = fn.calls.first().args
+      expect(args[0]).toBe('foo')
+      expect(args[1]).toBeInstanceOf(AbortSignal)
+      expect(args[1].aborted).toBe(false)
+      expect(promiseResult).toBe('bar')
     })
 
-    expect(fn).toHaveBeenCalledTimes(1)
-    const args = fn.calls.first().args
-    expect(args[0]).toBe('foo')
-    expect(args[1]).toBeInstanceOf(AbortSignal)
+    it('signal is aborted', async () => {
+      const customReason = new Error('custom reason')
+      const fn = jasmine.createSpy().and.returnValue(Promise.resolve('bar'))
+      const controller = new AbortController()
+      controller.abort(customReason)
+
+      const { result } = renderHook(() => useAbortableCallback(fn, []))
+      const callback = result.current
+      const err = await getErrorPromise(callback('foo', controller.signal))
+
+      expect(fn).toHaveBeenCalledTimes(0)
+      expect(err).toBe(customReason)
+    })
   })
 
   describe('deps', () => {
@@ -61,7 +79,7 @@ describe('useAbortableCallback', () => {
 
       const { result } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
-      callback()
+      callback(new AbortController().signal)
 
       expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.calls.first().args
@@ -74,7 +92,7 @@ describe('useAbortableCallback', () => {
 
       const { result, unmount } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
-      callback()
+      callback(new AbortController().signal)
       unmount()
 
       expect(fn).toHaveBeenCalledTimes(1)
@@ -89,7 +107,7 @@ describe('useAbortableCallback', () => {
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i]))
       const callback = result.current
-      callback()
+      callback(new AbortController().signal)
       rerender()
 
       expect(fn).toHaveBeenCalledTimes(1)
@@ -104,7 +122,7 @@ describe('useAbortableCallback', () => {
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i++]))
       const callback = result.current
-      callback()
+      callback(new AbortController().signal)
       rerender()
 
       expect(fn).toHaveBeenCalledTimes(1)

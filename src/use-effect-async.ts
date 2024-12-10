@@ -14,6 +14,8 @@ export function useEffectAsync(
 
     go(async () => {
       try {
+        controller.signal.throwIfAborted()
+
         await effect(controller.signal)
       } catch (err) {
         if (err instanceof InternalAbortError) {
