@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.7.0...v0.7.1) (2024-12-11)
+
+
+### Features
+
+* **use-abortable-callback:** improve the function signature ([c3fbda9](https://github.com/BlackGlory/extra-react-hooks/commit/c3fbda9882497ed8560ffbe53a275221e5386f3f))
+
 ## [0.7.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.6.9...v0.7.0) (2024-12-10)
 
 
