@@ -72,7 +72,7 @@ function useEffectAsync(
 function useAbortableCallback<Args extends unknown[], Result>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
 , deps: DependencyList
-): (...args: [...args: Args, signal: AbortSignal]) => Promise<Result>
+): (...args: [...args: Args, signal: AbortSignal | Falsy]) => Promise<Result>
 ```
 
 ### useUpdateEffect
