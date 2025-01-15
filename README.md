@@ -112,7 +112,7 @@ function useIncrement(
 ```ts
 function useResizeObserver(
   callback: ResizeObserverCallback
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | null | undefined>>
 , deps?: React.DependencyList
 ): void
 ```
@@ -122,12 +122,12 @@ function useResizeObserver(
 function useIntersectionObserver(
   callback: IntersectionObserverCallback
 , options: IntersectionObserverInit | undefined
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | null | undefined>>
 , deps?: React.DependencyList
 ): void
 function useIntersectionObserver(
   callback: IntersectionObserverCallback
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | null | undefined>>
 , deps?: React.DependencyList
 ): void
 ```

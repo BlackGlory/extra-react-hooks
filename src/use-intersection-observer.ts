@@ -1,27 +1,27 @@
-import { useEffect, RefObject, MutableRefObject } from 'react'
-import { assert, isArray, isntNull } from '@blackglory/prelude'
+import { useEffect, RefObject } from 'react'
+import { isArray, isntNull, isntUndefined } from '@blackglory/prelude'
 
 export function useIntersectionObserver(
   callback: IntersectionObserverCallback
 , options: IntersectionObserverInit | undefined
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | undefined | null>>
 , deps?: React.DependencyList
 ): void
 export function useIntersectionObserver(
   callback: IntersectionObserverCallback
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | undefined | null>>
 , deps?: React.DependencyList
 ): void
 export function useIntersectionObserver(...args:
 | [
     callback: IntersectionObserverCallback
   , options: IntersectionObserverInit | undefined
-  , refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+  , refs: Array<RefObject<HTMLElement | undefined | null>>
   , deps?: React.DependencyList
   ]
 | [
     callback: IntersectionObserverCallback
-  , refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+  , refs: Array<RefObject<HTMLElement | undefined | null>>
   , deps?: React.DependencyList
   ]
 ): void {
@@ -29,7 +29,6 @@ export function useIntersectionObserver(...args:
     case 2: {
       const [callback, refs] = args
 
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       return useIntersectionObserver(callback, undefined, refs)
     }
     case 3: {
@@ -38,13 +37,11 @@ export function useIntersectionObserver(...args:
         const refs = optionsOrRefs
         const deps = refsOrDeps as React.DependencyList | undefined
 
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         return useIntersectionObserver(callback, undefined, refs, deps)
       } else {
         const options = optionsOrRefs
-        const refs = refsOrDeps as Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+        const refs = refsOrDeps as Array<RefObject<HTMLElement>>
 
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         return useIntersectionObserver(callback, options, refs)
       }
     }
@@ -52,13 +49,13 @@ export function useIntersectionObserver(...args:
 
   const [callback, options, refs, deps] = args
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const observer = new IntersectionObserver(callback, options)
 
     refs
       .map(x => x.current)
       .filter(isntNull)
+      .filter(isntUndefined)
       .forEach(x => observer.observe(x))
 
     return () => observer.disconnect()

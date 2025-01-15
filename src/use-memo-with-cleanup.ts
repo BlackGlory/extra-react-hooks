@@ -5,7 +5,11 @@ export function useMemoWithCleanup<T>(
 , cleanup: (value: T) => void
 , deps?: React.DependencyList
 ): T {
-  const value = useMemo(factory, deps)
+  const value = useMemo(
+    factory
+    // @ts-ignore
+  , deps
+  )
 
   useEffect(() => {
     return () => cleanup(value)

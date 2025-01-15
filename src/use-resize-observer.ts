@@ -1,9 +1,9 @@
-import { useEffect, RefObject, MutableRefObject } from 'react'
-import { isntNull } from '@blackglory/prelude'
+import { useEffect, RefObject } from 'react'
+import { isntNull, isntUndefined } from '@blackglory/prelude'
 
 export function useResizeObserver(
   callback: ResizeObserverCallback
-, refs: Array<RefObject<HTMLElement> | MutableRefObject<HTMLElement>>
+, refs: Array<RefObject<HTMLElement | null | undefined>>
 , deps?: React.DependencyList
 ): void {
   useEffect(() => {
@@ -12,6 +12,7 @@ export function useResizeObserver(
     refs
       .map(x => x.current)
       .filter(isntNull)
+      .filter(isntUndefined)
       .forEach(x => observer.observe(x))
 
     return () => observer.disconnect()
