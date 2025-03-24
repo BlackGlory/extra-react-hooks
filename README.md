@@ -63,7 +63,7 @@ function useUnmount(effect: () => void): void
 ```ts
 function useEffectAsync(
   effect: (signal: AbortSignal) => Promise<void>
-, deps?: DependencyList
+, deps?: React.DependencyList
 ): void
 ```
 
@@ -71,7 +71,7 @@ function useEffectAsync(
 ```ts
 function useAbortableCallback<Args extends unknown[], Result>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
-, deps: DependencyList
+, deps: React.DependencyList
 ): (...args: [...args: Args, signal: AbortSignal | Falsy]) => Promise<Result>
 ```
 
@@ -190,6 +190,15 @@ function useGetSet<T>(
 ```ts
 function useIsomorphicLayoutEffect(
   effect: EffectCallback
-, deps?: DependencyList
+, deps?: React.DependencyList
 ): void
+```
+
+### useDebounce
+```ts
+function useDebounce<Args extends unknown[]>(
+  fn: (...args: Args) => void
+, timeout: number
+, deps?: React.DependencyList
+): (...args: Args) => void
 ```

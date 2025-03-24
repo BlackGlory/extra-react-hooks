@@ -1,11 +1,11 @@
-import { useCallback, DependencyList } from 'react'
+import { useCallback } from 'react'
 import { AbortController, raceAbortSignals } from 'extra-abort'
 import { useMemoWithCleanup } from './use-memo-with-cleanup.js'
 import { Falsy } from '@blackglory/prelude'
 
 export function useAbortableCallback<Args extends unknown[], Result>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
-, deps: DependencyList
+, deps: React.DependencyList
 ): (...args: [...args: Args, signal: AbortSignal | Falsy]) => Promise<Result> {
   const controller = useMemoWithCleanup(
     () => new AbortController()
