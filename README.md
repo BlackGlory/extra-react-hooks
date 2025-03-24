@@ -202,3 +202,20 @@ function useDebounce<Args extends unknown[]>(
 , deps?: React.DependencyList
 ): (...args: Args) => void
 ```
+
+### useNumberInput
+```ts
+function useNumberInput(params: {
+  value: number
+  lazy?: boolean
+
+  onChange(value: number): void
+}): {
+  getInputProps(): Required<Pick<
+    React.ComponentPropsWithoutRef<'input'>
+  , 'value'
+  | 'onChange'
+  | 'onBlur'
+  >>
+}
+```
