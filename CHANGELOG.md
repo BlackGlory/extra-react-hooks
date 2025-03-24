@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.0...v0.8.1) (2025-03-24)
+
+
+### Features
+
+* add `useDebounce` ([52ec6d4](https://github.com/BlackGlory/extra-react-hooks/commit/52ec6d4839e52be1eb4a755081a30c20a0f0055a))
+* add `useNumberInput` ([31d8817](https://github.com/BlackGlory/extra-react-hooks/commit/31d881757304b1e426934ccd026eddb9424a8ba9))
+
 ## [0.8.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.7.1...v0.8.0) (2025-01-15)
 
 
