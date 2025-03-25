@@ -52,18 +52,16 @@ export function useNumberInput({ value, lazy, onChange }: {
         }
       , onBlur(e) {
           if (e.target.checkValidity()) {
-            if (lazy) {
-              const newValue = e.target.valueAsNumber
+            const newValue = e.target.valueAsNumber
 
-              if (isntNaN(newValue) && newValue !== value) {
-                onChange(newValue)
+            if (isntNaN(newValue) && newValue !== value) {
+              onChange(newValue)
 
-                // 使用格式化后的新值.
-                // 若hook的调用方决定不接受新值, 则displayValue的值会被覆盖.
-                setDisplayValue(newValue.toString())
+              // 使用格式化后的新值.
+              // 若hook的调用方决定不接受新值, 则displayValue的值会被覆盖.
+              setDisplayValue(newValue.toString())
 
-                return
-              }
+              return
             }
           }
 
