@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { render, fireEvent, renderHook, screen } from '@testing-library/react'
 import { useFiniteStateMachine, IFiniteStateMachineSchema } from '@src/use-finite-state-machine.js'
 
@@ -26,18 +27,18 @@ describe(`
   })
 
   it('no change state', () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
 
     render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
     )
 
     expect(screen.queryByText('state: on')).not.toBeNull()
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toBeCalledTimes(1)
   })
 
   it('change state', async () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
 
     render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
@@ -45,7 +46,7 @@ describe(`
     fireEvent.click(screen.getByText('turnOff'))
 
     expect(screen.queryByText('state: off')).not.toBeNull()
-    expect(fn).toHaveBeenCalledTimes(2)
+    expect(fn).toBeCalledTimes(2)
   })
 })
 

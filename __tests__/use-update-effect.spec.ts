@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useUpdateEffect } from '@src/use-update-effect.js'
 
@@ -8,23 +9,23 @@ describe(`
   ): void
 `, () => {
   it('only call effect on update', () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
     const { rerender } = renderHook(() => useUpdateEffect(fn))
 
-    expect(fn).toHaveBeenCalledTimes(0)
+    expect(fn).toBeCalledTimes(0)
     rerender()
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toBeCalledTimes(1)
     rerender()
-    expect(fn).toHaveBeenCalledTimes(2)
+    expect(fn).toBeCalledTimes(2)
   })
 
   it('unmount', () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
     const { rerender, unmount } = renderHook(() => useUpdateEffect(() => fn))
 
     rerender()
-    expect(fn).toHaveBeenCalledTimes(0)
+    expect(fn).toBeCalledTimes(0)
     unmount()
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toBeCalledTimes(1)
   })
 })

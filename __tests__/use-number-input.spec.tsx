@@ -1,10 +1,11 @@
+import { describe, it, expect, vi } from 'vitest'
 import { userEvent } from '@testing-library/user-event'
 import { render, fireEvent, screen } from '@testing-library/react'
 import { useNumberInput } from '@src/use-number-input.js'
 
 describe('useNumberInput', () => {
   it('value', () => {
-    const onChangeHandler = jasmine.createSpy()
+    const onChangeHandler = vi.fn()
     const value = 1
 
     render(<Tester value={value} onChange={onChangeHandler} />)
@@ -16,7 +17,7 @@ describe('useNumberInput', () => {
   describe('lazy = false', () => {
     describe('onChange', () => {
       it('number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -30,12 +31,12 @@ describe('useNumberInput', () => {
         await userEvent.type(input, '2')
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toHaveBeenCalledTimes(1)
-        expect(onChangeHandler).toHaveBeenCalledWith(12)
+        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toBeCalledWith(12)
       })
 
       it('not a number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -50,13 +51,13 @@ describe('useNumberInput', () => {
         await userEvent.keyboard('[Backspace]')
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).not.toHaveBeenCalled()
+        expect(onChangeHandler).not.toBeCalled()
       })
     })
 
     describe('onBlur', () => {
       it('number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -71,14 +72,12 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toHaveBeenCalledTimes(1)
-        expect(onChangeHandler.calls.allArgs()).toEqual([
-          [12]
-        ])
+        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toBeCalledWith(12)
       })
 
       it('not a number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -94,7 +93,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).not.toHaveBeenCalled()
+        expect(onChangeHandler).not.toBeCalled()
       })
     })
   })
@@ -102,7 +101,7 @@ describe('useNumberInput', () => {
   describe('lazy = true', () => {
     describe('onChange', () => {
       it('number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -116,11 +115,11 @@ describe('useNumberInput', () => {
         await userEvent.type(input, '2')
 
         expect(input.value).toBe('12')
-        expect(onChangeHandler).not.toHaveBeenCalled()
+        expect(onChangeHandler).not.toBeCalled()
       })
 
       it('not a number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -135,13 +134,13 @@ describe('useNumberInput', () => {
         await userEvent.keyboard('[Backspace]')
 
         expect(input.value).toBe('')
-        expect(onChangeHandler).not.toHaveBeenCalled()
+        expect(onChangeHandler).not.toBeCalled()
       })
     })
 
     describe('onBlur', () => {
       it('number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -156,14 +155,12 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('12')
-        expect(onChangeHandler).toHaveBeenCalledTimes(1)
-        expect(onChangeHandler.calls.allArgs()).toEqual([
-          [12]
-        ])
+        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toBeCalledWith(12)
       })
 
       it('not a number', async () => {
-        const onChangeHandler = jasmine.createSpy()
+        const onChangeHandler = vi.fn()
         const value = 1
 
         render(
@@ -179,7 +176,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).not.toHaveBeenCalled()
+        expect(onChangeHandler).not.toBeCalled()
       })
     })
   })

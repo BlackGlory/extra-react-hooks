@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useIsFirstRender } from '@src/use-is-first-render.js'
 

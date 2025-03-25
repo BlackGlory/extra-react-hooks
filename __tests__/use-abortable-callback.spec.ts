@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useAbortableCallback } from '@src/use-abortable-callback.js'
 import { AbortSignal, AbortController } from 'extra-abort'
@@ -6,14 +7,14 @@ import { getErrorPromise } from 'return-style'
 describe('useAbortableCallback', () => {
   describe('call', () => {
     it('the last argument isnt signal', async () => {
-      const fn = jasmine.createSpy().and.returnValue(Promise.resolve('bar'))
+      const fn = vi.fn(async (value: string, signal: AbortSignal) => 'bar')
 
       const { result } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
       const promiseResult = await callback('foo', false)
 
-      expect(fn).toHaveBeenCalledTimes(1)
-      const args = fn.calls.first().args
+      expect(fn).toBeCalledTimes(1)
+      const args = fn.mock.calls[0]
       expect(args[0]).toBe('foo')
       expect(args[1]).toBeInstanceOf(AbortSignal)
       expect(args[1].aborted).toBe(false)
@@ -22,15 +23,15 @@ describe('useAbortableCallback', () => {
 
     describe('the last argument is signal', () => {
       it('signal isnt aborted', async () => {
-        const fn = jasmine.createSpy().and.returnValue(Promise.resolve('bar'))
+        const fn = vi.fn(async (value: string, signal: AbortSignal) => 'bar')
         const controller = new AbortController()
 
         const { result } = renderHook(() => useAbortableCallback(fn, []))
         const callback = result.current
         const promiseResult = await callback('foo', controller.signal)
 
-        expect(fn).toHaveBeenCalledTimes(1)
-        const args = fn.calls.first().args
+        expect(fn).toBeCalledTimes(1)
+        const args = fn.mock.calls[0]
         expect(args[0]).toBe('foo')
         expect(args[1]).toBeInstanceOf(AbortSignal)
         expect(args[1].aborted).toBe(false)
@@ -39,7 +40,7 @@ describe('useAbortableCallback', () => {
 
       it('signal is aborted', async () => {
         const customReason = new Error('custom reason')
-        const fn = jasmine.createSpy().and.returnValue(Promise.resolve('bar'))
+        const fn = vi.fn(async () => 'bar')
         const controller = new AbortController()
         controller.abort(customReason)
 
@@ -47,7 +48,7 @@ describe('useAbortableCallback', () => {
         const callback = result.current
         const err = await getErrorPromise(callback('foo', controller.signal))
 
-        expect(fn).toHaveBeenCalledTimes(0)
+        expect(fn).toBeCalledTimes(0)
         expect(err).toBe(customReason)
       })
     })
@@ -55,7 +56,7 @@ describe('useAbortableCallback', () => {
 
   describe('deps', () => {
     it('empty deps', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, []))
       const callback1 = result.current
@@ -66,7 +67,7 @@ describe('useAbortableCallback', () => {
     })
 
     it('same deps', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
       const i = 0
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i]))
@@ -78,7 +79,7 @@ describe('useAbortableCallback', () => {
     })
 
     it('diff deps', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
       let i = 0
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i++]))
@@ -92,34 +93,34 @@ describe('useAbortableCallback', () => {
 
   describe('signal', () => {
     it('mounted', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
 
       const { result } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
       callback(new AbortController().signal)
 
-      expect(fn).toHaveBeenCalledTimes(1)
-      const args = fn.calls.first().args
+      expect(fn).toBeCalledTimes(1)
+      const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
     })
 
     it('unmounted', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
 
       const { result, unmount } = renderHook(() => useAbortableCallback(fn, []))
       const callback = result.current
       callback(new AbortController().signal)
       unmount()
 
-      expect(fn).toHaveBeenCalledTimes(1)
-      const args = fn.calls.first().args
+      expect(fn).toBeCalledTimes(1)
+      const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)
     })
 
     it('rerender with same deps', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
       const i = 0
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i]))
@@ -127,14 +128,14 @@ describe('useAbortableCallback', () => {
       callback(new AbortController().signal)
       rerender()
 
-      expect(fn).toHaveBeenCalledTimes(1)
-      const args = fn.calls.first().args
+      expect(fn).toBeCalledTimes(1)
+      const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
     })
 
     it('rerender with diff deps', () => {
-      const fn = jasmine.createSpy()
+      const fn = vi.fn()
       let i = 0
 
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, [i++]))
@@ -142,8 +143,8 @@ describe('useAbortableCallback', () => {
       callback(new AbortController().signal)
       rerender()
 
-      expect(fn).toHaveBeenCalledTimes(1)
-      const args = fn.calls.first().args
+      expect(fn).toBeCalledTimes(1)
+      const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)
     })

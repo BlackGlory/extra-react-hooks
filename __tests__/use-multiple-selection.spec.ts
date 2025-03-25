@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useMultipleSelection } from '@src/use-multiple-selection.js'
 import { NonEmptyArray } from 'justypes'

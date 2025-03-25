@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { render, fireEvent, renderHook, screen } from '@testing-library/react'
 import { useForceUpdate } from '@src/use-force-update.js'
 
@@ -13,20 +14,20 @@ describe('useForceUpdate(): () => void', () => {
   })
 
   it('not update', () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
 
     render(<Tester>{fn}</Tester>)
 
-    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toBeCalledTimes(1)
   })
 
   it('update', () => {
-    const fn = jasmine.createSpy()
+    const fn = vi.fn()
 
     render(<Tester>{fn}</Tester>)
     fireEvent.click(screen.getByText('Force Update'))
 
-    expect(fn).toHaveBeenCalledTimes(2)
+    expect(fn).toBeCalledTimes(2)
   })
 })
 

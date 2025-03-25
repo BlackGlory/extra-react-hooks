@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useStateCycle } from '@src/use-state-cycle.js'
 import { NonEmptyArray } from 'justypes'

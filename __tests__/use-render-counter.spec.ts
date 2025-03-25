@@ -1,3 +1,4 @@
+import { it, expect } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useRenderCounter } from '@src/use-render-counter.js'
 

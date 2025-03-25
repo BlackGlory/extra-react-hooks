@@ -1,6 +1,4 @@
-// 由于以下原因, 使用karma:
-// - JSDOM不支持IntersectionObserver.
-
+import { describe, it, expect, vi } from 'vitest'
 import { useRef, useState } from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import { useIntersectionObserver } from '@src/use-intersection-observer.js'
@@ -8,18 +6,18 @@ import { waitForTimeout } from '@blackglory/wait-for'
 
 describe('useIntersectionObserver', () => {
   it('no intersection', async () => {
-    const fn = jasmine.createSpy<IntersectionObserverCallback>()
+    const fn = vi.fn<IntersectionObserverCallback>()
 
     render(<Tester callback={fn} />)
     await waitForTimeout(500)
 
     // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toHaveBeenCalledTimes(1)
-    expect(fn.calls.argsFor(0)[0][0].isIntersecting).toBe(false)
+    expect(fn).toBeCalledTimes(1)
+    expect(fn.mock.calls[0][0][0].isIntersecting).toBe(false)
   })
 
   it('intersection', async () => {
-    const fn = jasmine.createSpy<IntersectionObserverCallback>()
+    const fn = vi.fn<IntersectionObserverCallback>()
 
     render(<Tester callback={fn} />)
     await waitForTimeout(500)
@@ -27,14 +25,14 @@ describe('useIntersectionObserver', () => {
     await waitForTimeout(500)
 
     // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toHaveBeenCalledTimes(2)
-    expect(fn.calls.argsFor(0)[0][0].isIntersecting).toBe(false)
-    expect(fn.calls.argsFor(1)[0][0].isIntersecting).toBe(true)
+    expect(fn).toBeCalledTimes(2)
+    expect(fn.mock.calls[0][0][0].isIntersecting).toBe(false)
+    expect(fn.mock.calls[1][0][0].isIntersecting).toBe(true)
   })
 
   describe('deps', () => {
     it('no deps', async () => {
-      const fn = jasmine.createSpy<IntersectionObserverCallback>()
+      const fn = vi.fn<IntersectionObserverCallback>()
 
       const { rerender } = render(<Tester callback={fn} />)
       await waitForTimeout(500)
@@ -42,11 +40,11 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toHaveBeenCalledTimes(2)
+      expect(fn).toBeCalledTimes(2)
     })
 
     it('empty deps', async () => {
-      const fn = jasmine.createSpy<IntersectionObserverCallback>()
+      const fn = vi.fn<IntersectionObserverCallback>()
 
       const { rerender } = render(<Tester callback={fn} deps={[]} />)
       await waitForTimeout(500)
@@ -54,11 +52,11 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toHaveBeenCalledTimes(1)
+      expect(fn).toBeCalledTimes(1)
     })
 
     it('same deps', async () => {
-      const fn = jasmine.createSpy<IntersectionObserverCallback>()
+      const fn = vi.fn<IntersectionObserverCallback>()
 
       const { rerender } = render(<Tester callback={fn} deps={[0]} />)
       await waitForTimeout(500)
@@ -66,11 +64,11 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toHaveBeenCalledTimes(1)
+      expect(fn).toBeCalledTimes(1)
     })
 
     it('diff deps', async () => {
-      const fn = jasmine.createSpy<IntersectionObserverCallback>()
+      const fn = vi.fn<IntersectionObserverCallback>()
 
       const { rerender } = render(<Tester callback={fn} deps={[0]} />)
       await waitForTimeout(500)
@@ -78,7 +76,7 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toHaveBeenCalledTimes(2)
+      expect(fn).toBeCalledTimes(2)
     })
   })
 })
