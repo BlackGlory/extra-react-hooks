@@ -5,7 +5,7 @@ export function useNumberInput({ value, lazy, onChange }: {
   value: number
   lazy?: boolean
 
-  onChange(value: number): void
+  onChange(value: number, isEnd: boolean): void
 }): {
   getInputProps(): Required<Pick<
     React.ComponentPropsWithoutRef<'input'>
@@ -45,7 +45,7 @@ export function useNumberInput({ value, lazy, onChange }: {
               const newValue = e.target.valueAsNumber
 
               if (isntNaN(newValue) && newValue !== value) {
-                onChange(newValue)
+                onChange(newValue, false)
               }
             }
           }
@@ -55,11 +55,19 @@ export function useNumberInput({ value, lazy, onChange }: {
             const newValue = e.target.valueAsNumber
 
             if (!lazy || (isntNaN(newValue) && newValue !== value)) {
-              onChange(newValue)
+              onChange(newValue, true)
 
               // 使用格式化后的新值.
               // 若hook的调用方决定不接受新值, 则displayValue的值会被覆盖.
               setDisplayValue(newValue.toString())
+
+              return
+            }
+          } else {
+            if (!lazy) {
+              onChange(value, true)
+
+              setDisplayValue(value.toString())
 
               return
             }

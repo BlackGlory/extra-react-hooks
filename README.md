@@ -209,7 +209,7 @@ function useNumberInput(params: {
   value: number
   lazy?: boolean
 
-  onChange(value: number): void
+  onChange(value: number, isEnd: boolean): void
 }): {
   getInputProps(): Required<Pick<
     React.ComponentPropsWithoutRef<'input'>

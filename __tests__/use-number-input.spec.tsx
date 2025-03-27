@@ -32,7 +32,7 @@ describe('useNumberInput', () => {
 
         expect(input.value).toBe('1')
         expect(onChangeHandler).toBeCalledTimes(1)
-        expect(onChangeHandler).toBeCalledWith(12)
+        expect(onChangeHandler).toBeCalledWith(12, false)
       })
 
       it('not a number', async () => {
@@ -73,8 +73,8 @@ describe('useNumberInput', () => {
 
         expect(input.value).toBe('1')
         expect(onChangeHandler).toBeCalledTimes(2)
-        expect(onChangeHandler).nthCalledWith(1, 12)
-        expect(onChangeHandler).nthCalledWith(2, value)
+        expect(onChangeHandler).nthCalledWith(1, 12, false)
+        expect(onChangeHandler).nthCalledWith(2, value, true)
       })
 
       it('not a number', async () => {
@@ -95,7 +95,7 @@ describe('useNumberInput', () => {
 
         expect(input.value).toBe('1')
         expect(onChangeHandler).toBeCalledTimes(1)
-        expect(onChangeHandler).toBeCalledWith(value)
+        expect(onChangeHandler).toBeCalledWith(value, true)
       })
     })
   })
@@ -158,7 +158,7 @@ describe('useNumberInput', () => {
 
         expect(input.value).toBe('12')
         expect(onChangeHandler).toBeCalledTimes(1)
-        expect(onChangeHandler).toBeCalledWith(12)
+        expect(onChangeHandler).toBeCalledWith(12, true)
       })
 
       it('not a number', async () => {
