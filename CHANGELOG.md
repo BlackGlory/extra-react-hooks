@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.1...v0.8.2) (2025-03-27)
+
+
+### Features
+
+* **use-number-input:** add `isEnd` for `onChange` ([bf7eaf3](https://github.com/BlackGlory/extra-react-hooks/commit/bf7eaf343458f2dc306fc5c6fba5e715b598eb20))
+* **use-number-input:** improve non-lazy behaviors ([870c824](https://github.com/BlackGlory/extra-react-hooks/commit/870c824c78229e1f7ac532eb134084ecce0c620b))
+
 ### [0.8.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.0...v0.8.1) (2025-03-24)
 
 
