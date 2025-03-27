@@ -54,7 +54,7 @@ export function useNumberInput({ value, lazy, onChange }: {
           if (e.target.checkValidity()) {
             const newValue = e.target.valueAsNumber
 
-            if (isntNaN(newValue) && newValue !== value) {
+            if (!lazy || (isntNaN(newValue) && newValue !== value)) {
               onChange(newValue)
 
               // 使用格式化后的新值.
