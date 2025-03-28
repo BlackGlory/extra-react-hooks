@@ -7,8 +7,8 @@ describe('useDebounce', () => {
   describe('debounce', () => {
     it('call once', async () => {
       const fn = vi.fn()
-
       const { result } = renderHook(() => useDebounce(fn, 500))
+
       const debouncedFn = result.current
       debouncedFn()
 
@@ -19,8 +19,8 @@ describe('useDebounce', () => {
 
     it('call multiple times', async () => {
       const fn = vi.fn()
-
       const { result } = renderHook(() => useDebounce(fn, 500))
+
       const debouncedFn = result.current
       debouncedFn()
       await waitForTimeout(400)
@@ -36,7 +36,6 @@ describe('useDebounce', () => {
     it('do not call the new debounced function', async () => {
       const fn = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn, 500)
@@ -44,6 +43,7 @@ describe('useDebounce', () => {
           return useDebounce(fn, 1000)
         }
       })
+
       const debouncedFn = result.current
       debouncedFn()
       rerender()
@@ -57,7 +57,6 @@ describe('useDebounce', () => {
     it('call the new debounced function', async () => {
       const fn = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn, 500)
@@ -65,6 +64,7 @@ describe('useDebounce', () => {
           return useDebounce(fn, 1000)
         }
       })
+
       const debouncedFn1 = result.current
       debouncedFn1()
       rerender()
@@ -83,7 +83,6 @@ describe('useDebounce', () => {
       const fn1 = vi.fn()
       const fn2 = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn1, 500)
@@ -91,6 +90,7 @@ describe('useDebounce', () => {
           return useDebounce(fn2, 500)
         }
       })
+
       const debouncedFn = result.current
       debouncedFn()
       rerender()
@@ -104,7 +104,6 @@ describe('useDebounce', () => {
       const fn1 = vi.fn()
       const fn2 = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn1, 500, [])
@@ -112,6 +111,7 @@ describe('useDebounce', () => {
           return useDebounce(fn2, 500, [])
         }
       })
+
       const debouncedFn = result.current
       debouncedFn()
       rerender()
@@ -125,7 +125,6 @@ describe('useDebounce', () => {
       const fn1 = vi.fn()
       const fn2 = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn1, 500, [true])
@@ -133,6 +132,7 @@ describe('useDebounce', () => {
           return useDebounce(fn2, 500, [true])
         }
       })
+
       const debouncedFn = result.current
       debouncedFn()
       rerender()
@@ -146,7 +146,6 @@ describe('useDebounce', () => {
       const fn1 = vi.fn()
       const fn2 = vi.fn()
       let times = 0
-
       const { result, rerender } = renderHook(() => {
         if (times++ === 0) {
           return useDebounce(fn1, 500, [true])
@@ -154,6 +153,7 @@ describe('useDebounce', () => {
           return useDebounce(fn2, 500, [false])
         }
       })
+
       const debouncedFn = result.current
       debouncedFn()
       rerender()

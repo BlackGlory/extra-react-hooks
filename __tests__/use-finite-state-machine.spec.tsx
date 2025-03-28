@@ -39,10 +39,10 @@ describe(`
 
   it('change state', async () => {
     const fn = vi.fn()
-
     render(
       <Tester initial='on' event='turnOff'>{fn}</Tester>
     )
+
     fireEvent.click(screen.getByText('turnOff'))
 
     expect(screen.queryByText('state: off')).not.toBeNull()
