@@ -19,7 +19,6 @@ describe('useNumberInput', () => {
       it('number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -27,6 +26,7 @@ describe('useNumberInput', () => {
             lazy={false}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.type(input, '2')
 
@@ -38,7 +38,6 @@ describe('useNumberInput', () => {
       it('not a number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -46,6 +45,7 @@ describe('useNumberInput', () => {
             lazy={false}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.click(input)
         await userEvent.keyboard('[Backspace]')
@@ -59,7 +59,6 @@ describe('useNumberInput', () => {
       it('number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -67,6 +66,7 @@ describe('useNumberInput', () => {
             lazy={false}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.type(input, '2')
         fireEvent.blur(input)
@@ -80,7 +80,6 @@ describe('useNumberInput', () => {
       it('not a number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -88,6 +87,7 @@ describe('useNumberInput', () => {
             lazy={false}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.click(input)
         await userEvent.keyboard('[Backspace]')
@@ -105,7 +105,6 @@ describe('useNumberInput', () => {
       it('number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -113,6 +112,7 @@ describe('useNumberInput', () => {
             lazy={true}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.type(input, '2')
 
@@ -123,7 +123,6 @@ describe('useNumberInput', () => {
       it('not a number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -131,6 +130,7 @@ describe('useNumberInput', () => {
             lazy={true}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.click(input)
         await userEvent.keyboard('[Backspace]')
@@ -144,7 +144,6 @@ describe('useNumberInput', () => {
       it('number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -152,6 +151,7 @@ describe('useNumberInput', () => {
             lazy={true}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.type(input, '2')
         fireEvent.blur(input)
@@ -164,7 +164,6 @@ describe('useNumberInput', () => {
       it('not a number', async () => {
         const onChangeHandler = vi.fn()
         const value = 1
-
         render(
           <Tester
             value={value}
@@ -172,6 +171,7 @@ describe('useNumberInput', () => {
             lazy={true}
           />
         )
+
         const input = screen.getByRole<HTMLInputElement>('spinbutton')
         await userEvent.click(input)
         await userEvent.keyboard('[Backspace]')
