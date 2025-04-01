@@ -219,3 +219,8 @@ function useNumberInput(params: {
   >>
 }
 ```
+
+### useMediaQuery
+```ts
+function useMediaQuery(query: string): boolean
+```
