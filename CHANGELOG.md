@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.2...v0.8.3) (2025-04-01)
+
+
+### Features
+
+* add `useMediaQuery` ([0d0cb5c](https://github.com/BlackGlory/extra-react-hooks/commit/0d0cb5c9215b90ce95c65d74c1a1794306695e1f))
+
 ### [0.8.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.1...v0.8.2) (2025-03-27)
 
 
