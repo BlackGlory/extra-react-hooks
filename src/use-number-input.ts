@@ -23,7 +23,7 @@ export function useNumberInput({ value, lazy, onChange }: {
       // 以传入的值为准, 但只有在实际代表的值不同时, 才更新.
       if (oldValue !== value) setDisplayValue(value.toString())
     }
-  }, [value, displayValue])
+  }, [lazy, value, displayValue])
 
   useEffect(() => {
     if (lazy) {
@@ -31,7 +31,7 @@ export function useNumberInput({ value, lazy, onChange }: {
       // 由于onChange是惰性调用, 不需要检查值的相等性.
       setDisplayValue(value.toString())
     }
-  }, [value])
+  }, [lazy, value])
 
   return {
     getInputProps() {
