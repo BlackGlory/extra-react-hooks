@@ -1,5 +1,6 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useIsFirstRender } from './use-is-first-render.js'
+import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect.js'
 
 export function useIIFE(
   iife: (() => () => void)
@@ -10,7 +11,7 @@ export function useIIFE(
   const oldDeps = useRef<React.DependencyList>([])
   const cleanup = useRef<(() => void) | void>(undefined)
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     return () => {
       cleanup.current?.()
       cleanup.current = undefined
