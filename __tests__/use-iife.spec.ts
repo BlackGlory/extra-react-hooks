@@ -1,34 +1,64 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, test, expect, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useIIFE } from '@src/use-iife.js'
 
-describe('useIIFE(iife: () => void, deps: React.DependencyList): void', () => {
-  it('mount', () => {
-    const fn = vi.fn()
+describe('useIIFE', () => {
+  test('mount', () => {
+    const cleanup = vi.fn()
+    const fn = vi.fn(() => cleanup)
     renderHook(() => useIIFE(fn, []))
 
     expect(fn).toBeCalledTimes(1)
+    expect(cleanup).not.toBeCalled()
   })
 
-  it('rerender', () => {
-    const fn = vi.fn()
+  test('rerender', () => {
+    const cleanup = vi.fn()
+    const fn = vi.fn(() => cleanup)
     const { rerender } = renderHook(() => useIIFE(fn, []))
 
     rerender()
     expect(fn).toBeCalledTimes(1)
+    expect(cleanup).not.toBeCalled()
   })
 
-  it('unmount', () => {
-    const fn = vi.fn()
+  test('unmount', () => {
+    const cleanup = vi.fn()
+    const fn = vi.fn(() => cleanup)
     const { unmount } = renderHook(() => useIIFE(fn, []))
 
     unmount()
     expect(fn).toBeCalledTimes(1)
+    expect(cleanup).toBeCalledTimes(1)
   })
 
   describe('deps', () => {
-    it('does not run IIFE if deps are same', () => {
-      const fn = vi.fn()
+    test('no deps', () => {
+      const cleanup = vi.fn()
+      const fn = vi.fn(() => cleanup)
+      const { rerender } = renderHook(() => useIIFE(fn))
+
+      expect(fn).toBeCalledTimes(1)
+      expect(cleanup).not.toBeCalled()
+      rerender()
+      expect(fn).toBeCalledTimes(2)
+      expect(cleanup).toBeCalledTimes(1)
+    })
+
+    test('empty deps', () => {
+      const cleanup = vi.fn()
+      const fn = vi.fn(() => cleanup)
+      const { rerender } = renderHook(() => useIIFE(fn, []))
+
+      expect(fn).toBeCalledTimes(1)
+      rerender()
+      expect(fn).toBeCalledTimes(1)
+      expect(cleanup).not.toBeCalled()
+    })
+
+    test('same deps', () => {
+      const cleanup = vi.fn()
+      const fn = vi.fn(() => cleanup)
       const obj = {}
       const deps = [obj]
       const { rerender } = renderHook(() => useIIFE(fn, deps))
@@ -36,18 +66,22 @@ describe('useIIFE(iife: () => void, deps: React.DependencyList): void', () => {
       expect(fn).toBeCalledTimes(1)
       rerender()
       expect(fn).toBeCalledTimes(1)
+      expect(cleanup).not.toBeCalled()
     })
 
-    it('runs IIFE if deps are different', () => {
-      const fn = vi.fn()
+    test('diff deps', () => {
+      const cleanup = vi.fn()
+      const fn = vi.fn(() => cleanup)
       const obj = {}
       const deps = [obj]
       const { rerender } = renderHook(() => useIIFE(fn, deps))
 
       expect(fn).toBeCalledTimes(1)
+      expect(cleanup).not.toBeCalled()
       deps[0] = {}
       rerender()
       expect(fn).toBeCalledTimes(2)
+      expect(cleanup).toBeCalledTimes(1)
     })
   })
 })

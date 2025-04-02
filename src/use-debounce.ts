@@ -1,5 +1,6 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { setTimeout } from 'extra-timers'
+import { useIIFE } from './use-iife.js'
 
 export function useDebounce<Args extends unknown[]>(
   fn: (...args: Args) => void
@@ -9,7 +10,7 @@ export function useDebounce<Args extends unknown[]>(
   const fnRef = useRef<(...args: Args) => void>(fn)
   const cancelTimeoutRef = useRef<() => void>(undefined)
 
-  useEffect(() => {
+  useIIFE(() => {
     fnRef.current = fn
   }, deps)
 

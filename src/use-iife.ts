@@ -1,21 +1,33 @@
-import { useRef } from 'react'
-import { useIsFirstRender } from '@src/use-is-first-render.js'
+import { useLayoutEffect, useRef } from 'react'
+import { useIsFirstRender } from './use-is-first-render.js'
 
-export function useIIFE(iife: () => void, deps: React.DependencyList): void {
-  const oldDeps = useRef<React.DependencyList>([])
+export function useIIFE(
+  iife: (() => () => void)
+      | (() => void)
+, deps?: React.DependencyList
+): void {
   const isFirstRender = useIsFirstRender()
+  const oldDeps = useRef<React.DependencyList>([])
+  const cleanup = useRef<(() => void) | void>(undefined)
 
-  if (isFirstRender()) {
-    iife()
-  } else {
-    if (deps.length === oldDeps.current.length) {
-      if (deps.some((x, i) => x !== oldDeps.current[i])) {
-        iife()
-      }
-    } else {
-      iife()
+  useLayoutEffect(() => {
+    return () => {
+      cleanup.current?.()
+      cleanup.current = undefined
     }
-  }
+  }, [])
 
-  oldDeps.current = Array.from(deps)
+  if (
+    !deps ||
+    isFirstRender() ||
+    deps.length !== oldDeps.current.length ||
+    deps.some((x, i) => x !== oldDeps.current[i])
+  ) {
+    cleanup.current?.()
+    cleanup.current = iife()
+
+    oldDeps.current = deps
+                    ? [...deps]
+                    : []
+  }
 }

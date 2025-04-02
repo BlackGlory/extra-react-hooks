@@ -1,6 +1,7 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 import { ObservableFiniteStateMachine, IFiniteStateMachineSchema } from 'extra-fsm'
 import { useForceUpdate } from './use-force-update.js'
+import { useIIFE } from './use-iife.js'
 
 export type {
   ObservableFiniteStateMachine
@@ -20,7 +21,7 @@ export function useFiniteStateMachine<
   , [schema, initialState]
   )
 
-  useEffect(() => {
+  useIIFE(() => {
     const observable = fsm.observeStateChanges()
     const subscription = observable.subscribe(() => forceUpdate())
 

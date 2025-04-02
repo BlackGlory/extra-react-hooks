@@ -167,8 +167,16 @@ function useRenderCounter(): number
 
 ### useIIFE
 ```ts
-function useIIFE(iife: () => void, deps: React.DependencyList): void
+function useIIFE(
+  iife: (() => () => void)
+      | (() => void)
+, deps?: React.DependencyList
+): void
 ```
+
+[If you don't need an effect], then you probably need an IIFE.
+
+[If you don't need an effect]: https://react.dev/learn/you-might-not-need-an-effect
 
 ### useMemoWithCleanup
 ```ts

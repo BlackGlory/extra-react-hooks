@@ -1,12 +1,11 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
+import { useIIFE } from './use-iife.js'
 
 export function useMediaQuery(query: string): boolean {
   const mediaQuery = useMemo(() => matchMedia(query), [query])
   const [matches, setMatches] = useState<boolean>(mediaQuery.matches)
 
-  useEffect(() => {
-    updateMatches()
-
+  useIIFE(() => {
     mediaQuery.addEventListener('change', updateMatches)
     return () => mediaQuery.removeEventListener('change', updateMatches)
 

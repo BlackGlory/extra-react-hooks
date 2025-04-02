@@ -1,4 +1,5 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
+import { useIIFE } from './use-iife.js'
 
 export function useMemoWithCleanup<T>(
   factory: () => T
@@ -11,7 +12,7 @@ export function useMemoWithCleanup<T>(
   , deps
   )
 
-  useEffect(() => {
+  useIIFE(() => {
     return () => cleanup(value)
   }, deps)
 
