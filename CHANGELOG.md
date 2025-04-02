@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.5](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.4...v0.8.5) (2025-04-02)
+
+
+### Features
+
+* add `useIIFEAsync` ([0a2253a](https://github.com/BlackGlory/extra-react-hooks/commit/0a2253a3ab90a6c233a8adfc435ee70f030a8add))
+* improve signatures ([bd10f2e](https://github.com/BlackGlory/extra-react-hooks/commit/bd10f2ef9da793ec32f19c005b91893f1a527f6f))
+
 ### [0.8.4](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.3...v0.8.4) (2025-04-02)
 
 
