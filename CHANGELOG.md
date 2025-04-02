@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.3...v0.8.4) (2025-04-02)
+
+
+### Features
+
+* **use-iife:** add support for cleanup ([3d91562](https://github.com/BlackGlory/extra-react-hooks/commit/3d9156234e5e24fbbb25b6fde788782bcc79472d))
+
+
+### Bug Fixes
+
+* **use-number-input:** add missing deps ([cab4707](https://github.com/BlackGlory/extra-react-hooks/commit/cab4707e3a46757a6518b605972da0a385c09388))
+
 ### [0.8.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.2...v0.8.3) (2025-04-01)
 
 
