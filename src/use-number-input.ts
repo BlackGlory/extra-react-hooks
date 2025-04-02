@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { isntNaN } from 'extra-utils'
-import { useIIFE } from './use-iife.js'
 
 export function useNumberInput({ value, lazy, onChange }: {
   value: number
@@ -17,7 +16,7 @@ export function useNumberInput({ value, lazy, onChange }: {
 } {
   const [displayValue, setDisplayValue] = useState<string>(() => value.toString())
 
-  useIIFE(() => {
+  useEffect(() => {
     if (!lazy) {
       const oldValue = Number(displayValue)
 
@@ -26,7 +25,7 @@ export function useNumberInput({ value, lazy, onChange }: {
     }
   }, [value, displayValue])
 
-  useIIFE(() => {
+  useEffect(() => {
     if (lazy) {
       // 以传入的值为准.
       // 由于onChange是惰性调用, 不需要检查值的相等性.
