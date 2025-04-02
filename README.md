@@ -178,6 +178,14 @@ function useIIFE(
 
 [If you don't need an effect]: https://react.dev/learn/you-might-not-need-an-effect
 
+### useIIFEAsync
+```ts
+function useIIFEAsync(
+  iife: (signal: AbortSignal) => PromiseLike<void>
+, deps?: React.DependencyList
+): void
+```
+
 ### useMemoWithCleanup
 ```ts
 function useMemoWithCleanup<T>(
