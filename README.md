@@ -51,7 +51,7 @@ function useMount(effect: EffectCallback): void
 
 ### useMountAsync
 ```ts
-function useMountAsync(effect: (signal: AbortSignal) => Promise<void>): void
+function useMountAsync(effect: (signal: AbortSignal) => PromiseLike<void>): void
 ```
 
 ### useUnmount
@@ -62,7 +62,7 @@ function useUnmount(effect: () => void): void
 ### useEffectAsync
 ```ts
 function useEffectAsync(
-  effect: (signal: AbortSignal) => Promise<void>
+  effect: (signal: AbortSignal) => PromiseLike<void>
 , deps?: React.DependencyList
 ): void
 ```

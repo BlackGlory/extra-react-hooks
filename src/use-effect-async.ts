@@ -6,7 +6,7 @@ import { CustomError } from '@blackglory/errors'
 class InternalAbortError extends CustomError {}
 
 export function useEffectAsync(
-  effect: (signal: AbortSignal) => Promise<void>
+  effect: (signal: AbortSignal) => PromiseLike<void>
 , deps?: React.DependencyList
 ): void {
   useEffect(() => {
