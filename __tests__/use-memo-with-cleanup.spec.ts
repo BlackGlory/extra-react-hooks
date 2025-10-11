@@ -39,6 +39,25 @@ describe('useMemoWithCleanup', () => {
   })
 
   describe('deps', () => {
+    it('no deps', () => {
+      const factory = vi.fn(() => new AbortController())
+      const cleanup = vi.fn((controller: AbortController) => controller.abort())
+
+      const { result, rerender } = renderHook(() => useMemoWithCleanup(
+        factory
+      , cleanup
+      ))
+      const value1 = result.current
+      rerender()
+      const value2 = result.current
+
+      expect(factory).toBeCalledTimes(2)
+      expect(cleanup).toBeCalledWith(value1)
+      expect(value1).not.toBe(value2)
+      expect(value1.signal.aborted).toBe(true)
+      expect(value2.signal.aborted).toBe(false)
+    })
+
     it('empty deps', () => {
       const factory = vi.fn(() => new AbortController())
       const cleanup = vi.fn((controller: AbortController) => controller.abort())
