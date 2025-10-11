@@ -5,7 +5,7 @@ import { Falsy } from '@blackglory/prelude'
 
 export function useAbortableCallback<Args extends unknown[], Result>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
-, deps: React.DependencyList
+, deps?: React.DependencyList
 ): (...args: [...args: Args, signal: AbortSignal | Falsy]) => Promise<Result> {
   const controller = useMemoWithCleanup(
     () => new AbortController()
@@ -23,5 +23,5 @@ export function useAbortableCallback<Args extends unknown[], Result>(
     const realArgs = args.slice(0, -1) as Args
 
     return await callback(...realArgs, signal)
-  }, [controller, ...deps])
+  }, [controller])
 }

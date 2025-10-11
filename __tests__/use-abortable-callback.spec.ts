@@ -55,6 +55,17 @@ describe('useAbortableCallback', () => {
   })
 
   describe('deps', () => {
+    it('no deps', () => {
+      const fn = vi.fn()
+      const { result, rerender } = renderHook(() => useAbortableCallback(fn))
+
+      const callback1 = result.current
+      rerender()
+      const callback2 = result.current
+
+      expect(callback1).not.toBe(callback2)
+    })
+
     it('empty deps', () => {
       const fn = vi.fn()
       const { result, rerender } = renderHook(() => useAbortableCallback(fn, []))

@@ -71,7 +71,7 @@ function useEffectAsync(
 ```ts
 function useAbortableCallback<Args extends unknown[], Result>(
   callback: (...args: [...args: Args, signal: AbortSignal]) => PromiseLike<Result>
-, deps: React.DependencyList
+, deps?: React.DependencyList
 ): (...args: [...args: Args, signal: AbortSignal | Falsy]) => Promise<Result>
 ```
 
