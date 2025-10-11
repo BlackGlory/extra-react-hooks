@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.7](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.6...v0.8.7) (2025-10-11)
+
+
+### Features
+
+* **use-abortable-callback:** make the `deps` parameter optional ([e917c6b](https://github.com/BlackGlory/extra-react-hooks/commit/e917c6b65b1c0258c16ba4b33062c494282f629c))
+
 ### [0.8.6](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.5...v0.8.6) (2025-04-02)
 
 ### [0.8.5](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.4...v0.8.5) (2025-04-02)
