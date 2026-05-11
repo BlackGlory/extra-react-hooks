@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.8](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.7...v0.8.8) (2026-05-11)
+
+
+### Features
+
+* add `useUpdateLayoutEffect` ([3778d23](https://github.com/BlackGlory/extra-react-hooks/commit/3778d23cd89eca6e92128a17efd59302615725e4))
+
 ### [0.8.7](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.6...v0.8.7) (2025-10-11)
 
 
