@@ -83,6 +83,14 @@ function useUpdateEffect(
 ): void
 ```
 
+### useUpdateLayoutEffect
+```ts
+function useUpdateLayoutEffect(
+  effect: EffectCallback
+, deps?: React.DependencyList
+): void
+```
+
 ### useStateCycle
 ```ts
 function useStateCycle<T>(
