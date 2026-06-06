@@ -192,8 +192,5 @@ function Tester(props: {
 }) {
   const { getInputProps } = useNumberInput(props)
 
-  return <input
-    type='number'
-    {...getInputProps()}
-  />
+  return <input {...getInputProps()} />
 }

@@ -10,7 +10,8 @@ export function useNumberInput({ value, lazy, onChange }: {
 }): {
   getInputProps(): Required<Pick<
     React.ComponentPropsWithoutRef<'input'>
-  , 'value'
+  , 'type'
+  | 'value'
   | 'onChange'
   | 'onBlur'
   >>
@@ -37,7 +38,8 @@ export function useNumberInput({ value, lazy, onChange }: {
   return {
     getInputProps() {
       return {
-        value: displayValue
+        type: 'number'
+      , value: displayValue
       , onChange(e) {
           setDisplayValue(e.target.value)
 

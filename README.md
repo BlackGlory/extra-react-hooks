@@ -237,7 +237,8 @@ function useNumberInput(params: {
 }): {
   getInputProps(): Required<Pick<
     React.ComponentPropsWithoutRef<'input'>
-  , 'value'
+  , 'type'
+  | 'value'
   | 'onChange'
   | 'onBlur'
   >>
