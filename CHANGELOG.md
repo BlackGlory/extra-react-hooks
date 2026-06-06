@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.9](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.8...v0.8.9) (2026-06-06)
+
+
+### Bug Fixes
+
+* **use-number-input:** return a "type" prop ([db42e8e](https://github.com/BlackGlory/extra-react-hooks/commit/db42e8e4027b0dfabb6c5de01714b8bbf9166d68))
+
 ### [0.8.8](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.7...v0.8.8) (2026-05-11)
 
 
