@@ -22,15 +22,16 @@ export function useNumberInput({ value, lazy, onChange }: {
     if (!lazy) {
       const oldValue = Number(displayValue)
 
-      // 以传入的值为准, 但只有在实际代表的值不同时, 才更新.
+      // 以传入的参数值为准.
+      // 为了避免妨碍用户输入, 只有在实际代表的值不同时才更新显示值.
       if (oldValue !== value) setDisplayValue(value.toString())
     }
   }, [lazy, value, displayValue])
 
   useIIFE(() => {
     if (lazy) {
-      // 以传入的值为准.
-      // 由于onChange是惰性调用, 不需要检查值的相等性.
+      // 以传入的参数值为准.
+      // 由于lazy模式下, 用户焦点不在输入框上, 可以直接覆盖显示值.
       setDisplayValue(value.toString())
     }
   }, [lazy, value])
@@ -57,11 +58,14 @@ export function useNumberInput({ value, lazy, onChange }: {
           if (e.target.checkValidity()) {
             const newValue = e.target.valueAsNumber
 
-            if (!lazy || (isntNaN(newValue) && newValue !== value)) {
+            if (
+              !lazy ||
+              (isntNaN(newValue) && newValue !== value)
+            ) {
               onChange(newValue, true)
 
               // 使用格式化后的新值.
-              // 若hook的调用方决定不接受新值, 则displayValue的值会被覆盖.
+              // 若调用方决定不接受新值, 则该值会在下次渲染时覆盖.
               setDisplayValue(newValue.toString())
 
               return
