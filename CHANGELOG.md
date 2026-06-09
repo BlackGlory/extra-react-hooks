@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.11](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.10...v0.8.11) (2026-06-09)
+
+
+### Bug Fixes
+
+* **use-number-input:** handle edge cases ([05e7097](https://github.com/BlackGlory/extra-react-hooks/commit/05e7097fc2d80509da399e26507fa2fc5699cc21))
+
 ### [0.8.10](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.9...v0.8.10) (2026-06-09)
 
 ### [0.8.9](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.8...v0.8.9) (2026-06-06)
