@@ -26,8 +26,10 @@ export function useNumberInput({ value, lazy, onChange }: {
     getInputProps() {
       return {
         type: 'number'
+        // `input[type='number']`的特异行为:
+        // 如果设置的value与元素内部的值在数字上相同, 则界面不会发生更新.
       , value: displayValue
-        // `input[type='number']`有一些特异行为:
+        // `input[type='number']`的特异行为:
         // 如果只是在数字后面输入点`.`, 不会触发change事件.
       , onChange(e) {
           if (lazy) {
@@ -49,16 +51,16 @@ export function useNumberInput({ value, lazy, onChange }: {
             const newValue = e.target.valueAsNumber
 
             if (isntNaN(newValue) && newValue !== value) {
-              setDisplayValue(newValue.toString(), true)
+              setDisplayValue(newValue.toString())
 
               onChange(newValue, true)
             } else {
-              setDisplayValue(value.toString(), true)
+              setDisplayValue(value.toString())
 
               onChange(value, true)
             }
           } else {
-            setDisplayValue(value.toString(), true)
+            setDisplayValue(value.toString())
 
             onChange(value, true)
           }
@@ -70,7 +72,7 @@ export function useNumberInput({ value, lazy, onChange }: {
 
 function useDerivedState<T>(dep: T): [
   state: T
-, setState: (newState: T, force?: boolean) => void
+, setState: (newState: T) => void
 ] {
   const forceUpdate = useForceUpdate()
   const stateRef = useRef<T>(dep)
@@ -81,8 +83,8 @@ function useDerivedState<T>(dep: T): [
 
   return [
     stateRef.current
-  , (newState, force = false) => {
-      if (force || stateRef.current !== newState) {
+  , newState => {
+      if (stateRef.current !== newState) {
         stateRef.current = newState
 
         forceUpdate()
