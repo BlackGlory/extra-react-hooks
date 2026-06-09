@@ -11,7 +11,7 @@ describe('useIsMounted(): () => boolean', () => {
     expect(result.current()).toBe(false)
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useIsMounted())
 
     const fn1 = result.current

@@ -1,7 +1,5 @@
-import { useRef } from 'react'
 import { isntNaN } from 'extra-utils'
-import { useIIFE } from './use-iife.js'
-import { useForceUpdate } from './use-force-update.js'
+import { useDerivedState } from './use-derived-state.js'
 
 export function useNumberInput({ value, lazy, onChange }: {
   value: number
@@ -69,27 +67,4 @@ export function useNumberInput({ value, lazy, onChange }: {
       }
     }
   }
-}
-
-function useDerivedState<T>(dep: T): [
-  state: T
-, setState: (newState: T) => void
-] {
-  const forceUpdate = useForceUpdate()
-  const stateRef = useRef<T>(dep)
-
-  useIIFE(() => {
-    stateRef.current = dep
-  }, [dep])
-
-  return [
-    stateRef.current
-  , newState => {
-      if (stateRef.current !== newState) {
-        stateRef.current = newState
-
-        forceUpdate()
-      }
-    }
-  ]
 }

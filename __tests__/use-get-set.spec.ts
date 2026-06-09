@@ -14,7 +14,7 @@ describe(`
     expect(get()).toBe(1)
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useGetSet(1))
 
     const [get1, set1] = result.current

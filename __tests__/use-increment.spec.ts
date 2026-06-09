@@ -16,7 +16,7 @@ describe(`
     expect(value).toBe(1)
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useIncrement(1))
 
     const [value1, increment1, reset1] = result.current

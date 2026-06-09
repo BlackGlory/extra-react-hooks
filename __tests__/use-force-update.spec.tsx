@@ -3,7 +3,7 @@ import { render, fireEvent, renderHook, screen } from '@testing-library/react'
 import { useForceUpdate } from '@src/use-force-update.js'
 
 describe('useForceUpdate(): () => void', () => {
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useForceUpdate())
 
     const fn1 = result.current

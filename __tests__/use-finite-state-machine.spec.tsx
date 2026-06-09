@@ -16,7 +16,7 @@ describe(`
   , initialState: State
   ): ObservableFiniteStateMachine<State, Event>
 `, () => {
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useFiniteStateMachine(schema, 'on'))
 
     const fsm1 = result.current

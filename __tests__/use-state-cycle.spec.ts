@@ -16,7 +16,7 @@ describe(`
     expect(state).toBe('b')
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const orderedStates: NonEmptyArray<string> = ['a', 'b', 'c']
     const { result, rerender } = renderHook(() => useStateCycle(orderedStates, 1))
 

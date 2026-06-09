@@ -249,3 +249,11 @@ function useNumberInput(params: {
 ```ts
 function useMediaQuery(query: string): boolean
 ```
+
+### useDerivedState
+```ts
+function useDerivedState<T>(value: T): [
+  derivedState: T
+, setDerivedState: (newDerivedState: T) => void
+]
+```

@@ -10,7 +10,7 @@ describe('useToggle(initialState: boolean): [on: boolean, toggle: () => void]', 
     expect(on).toBe(false)
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useToggle(false))
 
     const [on1, toggle1] = result.current

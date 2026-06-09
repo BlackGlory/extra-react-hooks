@@ -11,7 +11,7 @@ describe('useIsFirstRender(): () => boolean', () => {
     expect(result.current()).toBe(false)
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const { result, rerender } = renderHook(() => useIsFirstRender())
 
     const fn1 = result.current

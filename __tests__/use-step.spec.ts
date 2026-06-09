@@ -16,7 +16,7 @@ describe(`
     expect(state).toBe('b')
   })
 
-  it('returns same references', () => {
+  it('returns the same reference', () => {
     const steps: NonEmptyArray<string> = ['a', 'b', 'c']
     const { result, rerender } = renderHook(() => useStep(steps, 1))
 
