@@ -28,6 +28,7 @@ export function useNumberInput({ value, lazy, onChange }: {
         type: 'number'
         // `input[type='number']`的特异行为:
         // 如果设置的value与元素内部的值在数字上相同, 则界面不会发生更新.
+        // 要解决这个问题需要对DOM快速更新两次: 清空, 然后重新设置值, 不适用于React的受控组件模型.
       , value: displayValue
         // `input[type='number']`的特异行为:
         // 如果只是在数字后面输入点`.`, 不会触发change事件.
