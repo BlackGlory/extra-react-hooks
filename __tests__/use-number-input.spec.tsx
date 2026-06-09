@@ -72,9 +72,8 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(2)
-        expect(onChangeHandler).nthCalledWith(1, 12, false)
-        expect(onChangeHandler).nthCalledWith(2, value, true)
+        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toBeCalledWith(12, false)
       })
 
       it('not a number', async () => {
@@ -94,8 +93,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(1)
-        expect(onChangeHandler).toBeCalledWith(value, true)
+        expect(onChangeHandler).not.toBeCalled()
       })
     })
   })
