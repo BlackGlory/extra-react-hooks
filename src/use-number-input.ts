@@ -7,6 +7,9 @@ export function useNumberInput({ value, lazy, onChange }: {
   value: number
   lazy?: boolean
 
+  /**
+   * @param isEnd 表示输入结束, 每次输入结束一定会产生一个`isEnd = true`的调用.
+   */
   onChange(value: number, isEnd: boolean): void
 }): {
   getInputProps(): Required<Pick<
@@ -51,9 +54,13 @@ export function useNumberInput({ value, lazy, onChange }: {
               onChange(newValue, true)
             } else {
               setDisplayValue(value.toString(), true)
+
+              onChange(value, true)
             }
           } else {
             setDisplayValue(value.toString(), true)
+
+            onChange(value, true)
           }
         }
       }
