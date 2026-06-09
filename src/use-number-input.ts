@@ -25,19 +25,17 @@ export function useNumberInput({ value, lazy, onChange }: {
         type: 'number'
       , value: displayValue
       , onChange(e) {
-          if (e.target.reportValidity()) {
-            if (lazy) {
-              setDisplayValue(e.target.value)
-            } else {
+          if (lazy) {
+            e.target.reportValidity()
+
+            setDisplayValue(e.target.value)
+          } else {
+            if (e.target.reportValidity()) {
               const newValue = e.target.valueAsNumber
 
               if (isntNaN(newValue) && newValue !== value) {
                 onChange(newValue, false)
               }
-            }
-          } else {
-            if (lazy) {
-              setDisplayValue(e.target.value)
             }
           }
         }
