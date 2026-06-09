@@ -24,6 +24,8 @@ export function useNumberInput({ value, lazy, onChange }: {
       return {
         type: 'number'
       , value: displayValue
+        // `input[type='number']`有一些特异行为:
+        // 如果只是在数字后面输入点`.`, 不会触发change事件.
       , onChange(e) {
           if (lazy) {
             e.target.reportValidity()
@@ -44,14 +46,14 @@ export function useNumberInput({ value, lazy, onChange }: {
             const newValue = e.target.valueAsNumber
 
             if (isntNaN(newValue) && newValue !== value) {
-              setDisplayValue(newValue.toString())
+              setDisplayValue(newValue.toString(), true)
 
               onChange(newValue, true)
             } else {
-              setDisplayValue(value.toString())
+              setDisplayValue(value.toString(), true)
             }
           } else {
-            setDisplayValue(value.toString())
+            setDisplayValue(value.toString(), true)
           }
         }
       }
@@ -59,7 +61,10 @@ export function useNumberInput({ value, lazy, onChange }: {
   }
 }
 
-function useDerivedState<T>(dep: T): [state: T, setState: (newState: T) => void] {
+function useDerivedState<T>(dep: T): [
+  state: T
+, setState: (newState: T, force?: boolean) => void
+] {
   const forceUpdate = useForceUpdate()
   const stateRef = useRef<T>(dep)
 
@@ -69,8 +74,8 @@ function useDerivedState<T>(dep: T): [state: T, setState: (newState: T) => void]
 
   return [
     stateRef.current
-  , newState => {
-      if (stateRef.current !== newState) {
+  , (newState, force = false) => {
+      if (force || stateRef.current !== newState) {
         stateRef.current = newState
 
         forceUpdate()
