@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.12](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.11...v0.8.12) (2026-06-09)
+
+
+### Bug Fixes
+
+* **use-number-input:** ensure an onChange event is emitted at the end ([0d96ead](https://github.com/BlackGlory/extra-react-hooks/commit/0d96ead399b03ffd8c4442ace8f0acdabf60f363))
+
 ### [0.8.11](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.10...v0.8.11) (2026-06-09)
 
 
