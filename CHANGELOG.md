@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.13](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.12...v0.8.13) (2026-06-09)
+
+
+### Features
+
+* add `useDerivedState()` ([cc9a8ed](https://github.com/BlackGlory/extra-react-hooks/commit/cc9a8ed001a404cec2834484c82f42d137ce059e))
+
 ### [0.8.12](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.11...v0.8.12) (2026-06-09)
 
 
