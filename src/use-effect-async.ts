@@ -21,6 +21,7 @@ export function useEffectAsync(
         if (err instanceof InternalAbortError) {
           pass()
         } else {
+          // 预期effect会捕获自身产生的错误, 如果未能捕获, 则让程序崩溃.
           throw err
         }
       }
