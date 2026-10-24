@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { useAbortableCallback } from '@src/use-abortable-callback.js'
 import { AbortSignal, AbortController } from 'extra-abort'
-import { getErrorPromise } from 'return-style'
+import { getErrorPromise } from '@blackglory/prelude'
 
 describe('useAbortableCallback', () => {
   describe('call', () => {

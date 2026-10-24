@@ -257,3 +257,12 @@ function useDerivedState<T>(value: T): [
 , setDerivedState: (newDerivedState: T) => void
 ]
 ```
+
+### usePromise
+```ts
+function usePromise<T>(promise: PromiseLike<T>): T | undefined
+```
+
+Similar to `use(promise)`,
+but it also works in environments without `<Suspense>` or server components.
+Errors thrown can be caught by error boundaries.
