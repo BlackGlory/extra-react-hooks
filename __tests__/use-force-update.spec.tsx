@@ -18,7 +18,7 @@ describe('useForceUpdate(): () => void', () => {
 
     render(<Tester>{fn}</Tester>)
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('update', () => {
@@ -27,7 +27,7 @@ describe('useForceUpdate(): () => void', () => {
     render(<Tester>{fn}</Tester>)
     fireEvent.click(screen.getByText('Force Update'))
 
-    expect(fn).toBeCalledTimes(2)
+    expect(fn).toHaveBeenCalledTimes(2)
   })
 })
 

@@ -12,11 +12,11 @@ describe(`
     const fn = vi.fn()
     const { rerender } = renderHook(() => useUpdateLayoutEffect(fn))
 
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
     rerender()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     rerender()
-    expect(fn).toBeCalledTimes(2)
+    expect(fn).toHaveBeenCalledTimes(2)
   })
 
   it('unmount', () => {
@@ -24,8 +24,8 @@ describe(`
     const { rerender, unmount } = renderHook(() => useUpdateLayoutEffect(() => fn))
 
     rerender()
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
     unmount()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 })

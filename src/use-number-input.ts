@@ -1,4 +1,4 @@
-import { isntNaN } from 'extra-utils'
+import { isntNaN } from '@blackglory/prelude'
 import { useDerivedState } from './use-derived-state.js'
 
 export function useNumberInput({ value, lazy, onChange }: {

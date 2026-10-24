@@ -8,7 +8,7 @@ describe('useIIFEAsync', () => {
 
     renderHook(() => useIIFEAsync(fn))
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   describe('deps', () => {
@@ -18,7 +18,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn))
       rerender()
 
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
 
     test('empty deps', () => {
@@ -27,7 +27,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn, []))
       rerender()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     test('same deps', () => {
@@ -37,7 +37,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn, [i]))
       rerender()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     test('diff deps', () => {
@@ -47,7 +47,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn, [i++]))
       rerender()
 
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
   })
 
@@ -57,7 +57,7 @@ describe('useIIFEAsync', () => {
 
       renderHook(() => useIIFEAsync(fn))
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
@@ -69,7 +69,7 @@ describe('useIIFEAsync', () => {
       const { unmount } = renderHook(() => useIIFEAsync(fn))
       unmount()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)
@@ -82,7 +82,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn, [i]))
       rerender()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
@@ -95,7 +95,7 @@ describe('useIIFEAsync', () => {
       const { rerender } = renderHook(() => useIIFEAsync(fn, [i++]))
       rerender()
 
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)

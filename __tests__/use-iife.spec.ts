@@ -8,7 +8,7 @@ describe('useIIFE', () => {
     const fn = vi.fn(() => cleanup)
     renderHook(() => useIIFE(fn, []))
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     expect(cleanup).not.toBeCalled()
   })
 
@@ -18,7 +18,7 @@ describe('useIIFE', () => {
     const { rerender } = renderHook(() => useIIFE(fn, []))
 
     rerender()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     expect(cleanup).not.toBeCalled()
   })
 
@@ -28,8 +28,8 @@ describe('useIIFE', () => {
     const { unmount } = renderHook(() => useIIFE(fn, []))
 
     unmount()
-    expect(fn).toBeCalledTimes(1)
-    expect(cleanup).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
+    expect(cleanup).toHaveBeenCalledTimes(1)
   })
 
   describe('deps', () => {
@@ -38,11 +38,11 @@ describe('useIIFE', () => {
       const fn = vi.fn(() => cleanup)
       const { rerender } = renderHook(() => useIIFE(fn))
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
       rerender()
-      expect(fn).toBeCalledTimes(2)
-      expect(cleanup).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(2)
+      expect(cleanup).toHaveBeenCalledTimes(1)
     })
 
     test('empty deps', () => {
@@ -50,9 +50,9 @@ describe('useIIFE', () => {
       const fn = vi.fn(() => cleanup)
       const { rerender } = renderHook(() => useIIFE(fn, []))
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       rerender()
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
     })
 
@@ -63,9 +63,9 @@ describe('useIIFE', () => {
       const deps = [obj]
       const { rerender } = renderHook(() => useIIFE(fn, deps))
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       rerender()
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
     })
 
@@ -76,12 +76,12 @@ describe('useIIFE', () => {
       const deps = [obj]
       const { rerender } = renderHook(() => useIIFE(fn, deps))
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
       deps[0] = {}
       rerender()
-      expect(fn).toBeCalledTimes(2)
-      expect(cleanup).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(2)
+      expect(cleanup).toHaveBeenCalledTimes(1)
     })
   })
 })

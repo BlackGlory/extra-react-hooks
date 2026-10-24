@@ -1,7 +1,7 @@
 import { describe, test } from 'vitest'
 import { act, render, screen } from '@testing-library/react'
 import { useMediaQuery } from '@src/use-media-query.js'
-import { page } from '@vitest/browser/context'
+import { page } from 'vitest/browser'
 import { toString } from '@blackglory/prelude'
 import { waitForTimeout } from '@blackglory/wait-for'
 

@@ -15,7 +15,7 @@ describe('useMemoWithCleanup', () => {
     ))
     const value = result.current
 
-    expect(factory).toBeCalledTimes(1)
+    expect(factory).toHaveBeenCalledTimes(1)
     expect(cleanup).not.toBeCalled()
     expect(value).toBeInstanceOf(AbortController)
     expect(value.signal.aborted).toBe(false)
@@ -33,7 +33,7 @@ describe('useMemoWithCleanup', () => {
     unmount()
     const value = result.current
 
-    expect(factory).toBeCalledTimes(1)
+    expect(factory).toHaveBeenCalledTimes(1)
     expect(cleanup).toBeCalledWith(value)
     expect(value.signal.aborted).toBe(true)
   })
@@ -51,7 +51,7 @@ describe('useMemoWithCleanup', () => {
       rerender()
       const value2 = result.current
 
-      expect(factory).toBeCalledTimes(2)
+      expect(factory).toHaveBeenCalledTimes(2)
       expect(cleanup).toBeCalledWith(value1)
       expect(value1).not.toBe(value2)
       expect(value1.signal.aborted).toBe(true)
@@ -71,7 +71,7 @@ describe('useMemoWithCleanup', () => {
       rerender()
       const value2 = result.current
 
-      expect(factory).toBeCalledTimes(1)
+      expect(factory).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
       expect(value1).toBe(value2)
       expect(value1.signal.aborted).toBe(false)
@@ -91,7 +91,7 @@ describe('useMemoWithCleanup', () => {
       rerender()
       const value2 = result.current
 
-      expect(factory).toBeCalledTimes(1)
+      expect(factory).toHaveBeenCalledTimes(1)
       expect(cleanup).not.toBeCalled()
       expect(value1).toBe(value2)
       expect(value1.signal.aborted).toBe(false)
@@ -111,7 +111,7 @@ describe('useMemoWithCleanup', () => {
       rerender()
       const value2 = result.current
 
-      expect(factory).toBeCalledTimes(2)
+      expect(factory).toHaveBeenCalledTimes(2)
       expect(cleanup).toBeCalledWith(value1)
       expect(value1).not.toBe(value2)
       expect(value1.signal.aborted).toBe(true)

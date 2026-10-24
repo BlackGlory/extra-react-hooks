@@ -12,7 +12,7 @@ describe('useIntersectionObserver', () => {
     await waitForTimeout(500)
 
     // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     expect(fn.mock.calls[0][0][0].isIntersecting).toBe(false)
   })
 
@@ -25,7 +25,7 @@ describe('useIntersectionObserver', () => {
     await waitForTimeout(500)
 
     // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toBeCalledTimes(2)
+    expect(fn).toHaveBeenCalledTimes(2)
     expect(fn.mock.calls[0][0][0].isIntersecting).toBe(false)
     expect(fn.mock.calls[1][0][0].isIntersecting).toBe(true)
   })
@@ -40,7 +40,7 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
 
     it('empty deps', async () => {
@@ -52,7 +52,7 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('same deps', async () => {
@@ -64,7 +64,7 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('diff deps', async () => {
@@ -76,7 +76,7 @@ describe('useIntersectionObserver', () => {
       await waitForTimeout(500)
 
       // IntersectionObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
   })
 })

@@ -7,7 +7,7 @@ describe('useUnmount(effect: () => void): void', () => {
     const fn = vi.fn()
     renderHook(() => useUnmount(fn))
 
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
   })
 
   it('rerender', () => {
@@ -15,15 +15,15 @@ describe('useUnmount(effect: () => void): void', () => {
     const { rerender } = renderHook(() => useUnmount(fn))
 
     rerender()
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
   })
 
   it('unmount', () => {
     const fn = vi.fn()
     const { unmount } = renderHook(() => useUnmount(fn))
 
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
     unmount()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 })

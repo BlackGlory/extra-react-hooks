@@ -31,7 +31,7 @@ describe('useNumberInput', () => {
         await userEvent.type(input, '2')
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toHaveBeenCalledTimes(1)
         expect(onChangeHandler).toBeCalledWith(12, false)
       })
 
@@ -72,7 +72,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(2)
+        expect(onChangeHandler).toHaveBeenCalledTimes(2)
         expect(onChangeHandler).nthCalledWith(1, 12, false)
         expect(onChangeHandler).nthCalledWith(2, 1, true)
       })
@@ -94,7 +94,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toHaveBeenCalledTimes(1)
         expect(onChangeHandler).toBeCalledWith(1, true)
       })
     })
@@ -157,7 +157,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('12')
-        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toHaveBeenCalledTimes(1)
         expect(onChangeHandler).toBeCalledWith(12, true)
       })
 
@@ -178,7 +178,7 @@ describe('useNumberInput', () => {
         fireEvent.blur(input)
 
         expect(input.value).toBe('1')
-        expect(onChangeHandler).toBeCalledTimes(1)
+        expect(onChangeHandler).toHaveBeenCalledTimes(1)
         expect(onChangeHandler).toBeCalledWith(1, true)
       })
     })

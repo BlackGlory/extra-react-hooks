@@ -14,7 +14,7 @@ describe('useDebounce', () => {
 
       expect(fn).not.toBeCalled()
       await waitForTimeout(600)
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('call multiple times', async () => {
@@ -28,7 +28,7 @@ describe('useDebounce', () => {
 
       expect(fn).not.toBeCalled()
       await waitForTimeout(600)
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -49,9 +49,9 @@ describe('useDebounce', () => {
       rerender()
 
       await waitForTimeout(600)
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       await waitForTimeout(500)
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('call the new debounced function', async () => {
@@ -74,7 +74,7 @@ describe('useDebounce', () => {
       await waitForTimeout(600)
       expect(fn).not.toBeCalled()
       await waitForTimeout(1000)
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -97,7 +97,7 @@ describe('useDebounce', () => {
 
       await waitForTimeout(600)
       expect(fn1).not.toBeCalled()
-      expect(fn2).toBeCalledTimes(1)
+      expect(fn2).toHaveBeenCalledTimes(1)
     })
 
     it('empty deps', async () => {
@@ -117,7 +117,7 @@ describe('useDebounce', () => {
       rerender()
 
       await waitForTimeout(600)
-      expect(fn1).toBeCalledTimes(1)
+      expect(fn1).toHaveBeenCalledTimes(1)
       expect(fn2).not.toBeCalled()
     })
 
@@ -138,7 +138,7 @@ describe('useDebounce', () => {
       rerender()
 
       await waitForTimeout(600)
-      expect(fn1).toBeCalledTimes(1)
+      expect(fn1).toHaveBeenCalledTimes(1)
       expect(fn2).not.toBeCalled()
     })
 
@@ -160,7 +160,7 @@ describe('useDebounce', () => {
 
       await waitForTimeout(600)
       expect(fn1).not.toBeCalled()
-      expect(fn2).toBeCalledTimes(1)
+      expect(fn2).toHaveBeenCalledTimes(1)
     })
   })
 })

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
-import { go, pass } from '@blackglory/prelude'
+import { go, pass, CustomError } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
-import { CustomError } from '@blackglory/errors'
 
 class InternalAbortError extends CustomError {}
 

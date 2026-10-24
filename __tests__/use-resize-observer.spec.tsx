@@ -12,7 +12,7 @@ describe('useResizeObserver', () => {
     await waitForTimeout(500)
 
     // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('resize', async () => {
@@ -24,7 +24,7 @@ describe('useResizeObserver', () => {
     await waitForTimeout(500)
 
     // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-    expect(fn).toBeCalledTimes(2)
+    expect(fn).toHaveBeenCalledTimes(2)
   })
 
   describe('deps', () => {
@@ -37,7 +37,7 @@ describe('useResizeObserver', () => {
       await waitForTimeout(500)
 
       // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
 
     it('empty deps', async () => {
@@ -49,7 +49,7 @@ describe('useResizeObserver', () => {
       await waitForTimeout(500)
 
       // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('same deps', async () => {
@@ -61,7 +61,7 @@ describe('useResizeObserver', () => {
       await waitForTimeout(500)
 
       // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
     })
 
     it('diff deps', async () => {
@@ -73,7 +73,7 @@ describe('useResizeObserver', () => {
       await waitForTimeout(500)
 
       // ResizeObserver的回调函数会在观察目标元素时立即调用一次.
-      expect(fn).toBeCalledTimes(2)
+      expect(fn).toHaveBeenCalledTimes(2)
     })
   })
 })

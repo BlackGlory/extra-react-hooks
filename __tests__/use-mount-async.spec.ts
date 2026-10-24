@@ -8,7 +8,7 @@ describe('useMountAsync', () => {
 
     renderHook(() => useMountAsync(fn))
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     const args = fn.mock.calls[0]
     expect(args[0]).toBeInstanceOf(AbortSignal)
     expect(args[0].aborted).toBe(false)
@@ -20,7 +20,7 @@ describe('useMountAsync', () => {
 
     rerender()
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     const args = fn.mock.calls[0]
     expect(args[0]).toBeInstanceOf(AbortSignal)
     expect(args[0].aborted).toBe(false)
@@ -32,7 +32,7 @@ describe('useMountAsync', () => {
 
     unmount()
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
     const args = fn.mock.calls[0]
     expect(args[0]).toBeInstanceOf(AbortSignal)
     expect(args[0].aborted).toBe(true)

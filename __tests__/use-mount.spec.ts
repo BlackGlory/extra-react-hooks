@@ -8,7 +8,7 @@ describe('useMount(effect: EffectCallback): void', () => {
 
     renderHook(() => useMount(fn))
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('rerender', () => {
@@ -17,15 +17,15 @@ describe('useMount(effect: EffectCallback): void', () => {
 
     rerender()
 
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('unmount', () => {
     const fn = vi.fn()
     const { unmount } = renderHook(() => useMount(() => fn))
 
-    expect(fn).toBeCalledTimes(0)
+    expect(fn).toHaveBeenCalledTimes(0)
     unmount()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 })

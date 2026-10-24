@@ -13,7 +13,7 @@ describe('useAbortableCallback', () => {
       const callback = result.current
       const promiseResult = await callback('foo', false)
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBe('foo')
       expect(args[1]).toBeInstanceOf(AbortSignal)
@@ -30,7 +30,7 @@ describe('useAbortableCallback', () => {
         const callback = result.current
         const promiseResult = await callback('foo', controller.signal)
 
-        expect(fn).toBeCalledTimes(1)
+        expect(fn).toHaveBeenCalledTimes(1)
         const args = fn.mock.calls[0]
         expect(args[0]).toBe('foo')
         expect(args[1]).toBeInstanceOf(AbortSignal)
@@ -48,7 +48,7 @@ describe('useAbortableCallback', () => {
         const callback = result.current
         const err = await getErrorPromise(callback('foo', controller.signal))
 
-        expect(fn).toBeCalledTimes(0)
+        expect(fn).toHaveBeenCalledTimes(0)
         expect(err).toBe(customReason)
       })
     })
@@ -110,7 +110,7 @@ describe('useAbortableCallback', () => {
       const callback = result.current
       callback(new AbortController().signal)
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
@@ -124,7 +124,7 @@ describe('useAbortableCallback', () => {
       callback(new AbortController().signal)
       unmount()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)
@@ -139,7 +139,7 @@ describe('useAbortableCallback', () => {
       callback(new AbortController().signal)
       rerender()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(false)
@@ -154,7 +154,7 @@ describe('useAbortableCallback', () => {
       callback(new AbortController().signal)
       rerender()
 
-      expect(fn).toBeCalledTimes(1)
+      expect(fn).toHaveBeenCalledTimes(1)
       const args = fn.mock.calls[0]
       expect(args[0]).toBeInstanceOf(AbortSignal)
       expect(args[0].aborted).toBe(true)

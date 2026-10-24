@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g yarn
     - run: yarn install
-    - run: yarn playwright install
+    - run: yarn playwright install chromium
     - run: yarn lint
     - run: yarn test
       env:

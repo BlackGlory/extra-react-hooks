@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { setTimeout } from 'extra-timers'
+import { setTimeout } from '@blackglory/prelude'
 import { useIIFE } from './use-iife.js'
 
 export function useDebounce<Args extends unknown[]>(

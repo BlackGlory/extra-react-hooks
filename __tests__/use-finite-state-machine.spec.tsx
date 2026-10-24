@@ -34,7 +34,7 @@ describe(`
     )
 
     expect(screen.queryByText('state: on')).not.toBeNull()
-    expect(fn).toBeCalledTimes(1)
+    expect(fn).toHaveBeenCalledTimes(1)
   })
 
   it('change state', async () => {
@@ -46,7 +46,7 @@ describe(`
     fireEvent.click(screen.getByText('turnOff'))
 
     expect(screen.queryByText('state: off')).not.toBeNull()
-    expect(fn).toBeCalledTimes(2)
+    expect(fn).toHaveBeenCalledTimes(2)
   })
 })
 

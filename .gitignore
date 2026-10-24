@@ -63,3 +63,4 @@ dist
 
 # Test
 __screenshots__
+.vitest
