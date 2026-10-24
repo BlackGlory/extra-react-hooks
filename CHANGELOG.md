@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.13...v0.9.0) (2026-10-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v18 => Node.js v22
+
+### Features
+
+* add `usePromise` ([25de482](https://github.com/BlackGlory/extra-react-hooks/commit/25de4828813247530379be56448a1c2d4a5fa663))
+
+
+* upgrade dependencies ([c954089](https://github.com/BlackGlory/extra-react-hooks/commit/c9540891c5a627218b8336e699539b8cf57549e5))
+
 ### [0.8.13](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.12...v0.8.13) (2026-06-09)
 
 
