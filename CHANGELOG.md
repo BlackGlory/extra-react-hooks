@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.9.0...v0.9.1) (2026-10-25)
+
+
+### Features
+
+* add `createStrictContext`, `useStrictContext` ([8ffccfb](https://github.com/BlackGlory/extra-react-hooks/commit/8ffccfba1c3ddc594f0ca56f102ddb93cc7eb1a6))
+
 ## [0.9.0](https://github.com/BlackGlory/extra-react-hooks/compare/v0.8.13...v0.9.0) (2026-10-24)
 
 
