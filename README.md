@@ -266,3 +266,11 @@ function usePromise<T>(promise: PromiseLike<T>): T | undefined
 Similar to `use(promise)`,
 but it also works in environments without `<Suspense>` or server components.
 Errors thrown can be caught by error boundaries.
+
+### Strict Context
+```ts
+type StrictContext<T> = Context<T | typeof dummy>
+
+function createStrictContext<T>(): StrictContext<T>
+function useStrictContext<T>(context: StrictContext<T>): T
+```
