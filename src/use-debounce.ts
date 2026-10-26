@@ -18,9 +18,9 @@ export function useDebounce<Args extends unknown[]>(
     cancelTimeoutRef.current?.()
 
     cancelTimeoutRef.current = setTimeout(timeout, () => {
-      fnRef.current(...args)
-
       cancelTimeoutRef.current = undefined
+
+      fnRef.current(...args)
     })
   }
 }
