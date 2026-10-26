@@ -1,7 +1,6 @@
-import { CustomError, go, pass } from '@blackglory/prelude'
+import { go, pass } from '@blackglory/prelude'
 import { useIIFE } from './use-iife.js'
-
-class InternalAbortError extends CustomError {}
+import { InternalAbortError } from './utils.js'
 
 export function useIIFEAsync(
   iife: (signal: AbortSignal) => PromiseLike<void>

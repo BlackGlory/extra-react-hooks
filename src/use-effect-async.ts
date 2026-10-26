@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
-import { go, pass, CustomError } from '@blackglory/prelude'
+import { go, pass } from '@blackglory/prelude'
 import { AbortController } from 'extra-abort'
-
-class InternalAbortError extends CustomError {}
+import { InternalAbortError } from './utils.js'
 
 export function useEffectAsync(
   effect: (signal: AbortSignal) => PromiseLike<void>
