@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.3](https://github.com/BlackGlory/extra-react-hooks/compare/v0.9.2...v0.9.3) (2026-10-26)
+
+
+### Features
+
+* **use-debounce:** reset cancelTimeoutRef before the function call ([08c21c2](https://github.com/BlackGlory/extra-react-hooks/commit/08c21c22682c7cfc6b470e95c10c90adce079096))
+
 ### [0.9.2](https://github.com/BlackGlory/extra-react-hooks/compare/v0.9.1...v0.9.2) (2026-10-26)
 
 ### [0.9.1](https://github.com/BlackGlory/extra-react-hooks/compare/v0.9.0...v0.9.1) (2026-10-25)
